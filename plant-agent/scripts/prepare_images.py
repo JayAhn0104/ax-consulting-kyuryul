@@ -1,7 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["pillow"]
-# ///
 """input/의 사진을 등록용 규격으로 변환해 images/에 저장하고 product.json에 기록한다.
 
 - 대표이미지: --rep로 지정한 사진. 없으면 파일명이 '대표' 또는 '썸네일'로 시작하는 사진

@@ -1,7 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["requests"]
-# ///
 """네이버 쇼핑 검색 API로 상위 상품의 카테고리를 집계한다.
 
 클라이언트의 기존 판단 방식(검색 상위 상품의 카테고리를 따름)을 재현.

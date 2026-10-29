@@ -1,6 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# ///
 """product.json을 네이버 등록 규칙으로 검사하고 결과를 product.json의 checks에 기록한다.
 
 결과 등급: pass / warning(확인 후 판단) / error(등록 불가)

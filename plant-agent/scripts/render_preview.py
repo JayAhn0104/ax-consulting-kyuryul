@@ -1,14 +1,12 @@
-# /// script
-# requires-python = ">=3.11"
-# ///
 """product.json으로 클라이언트 검토용 미리보기(preview.html)를 만든다.
 
 섹션 순서는 스마트스토어 등록 화면 순서를 따름.
 
-사용: uv run scripts/render_preview.py <상품폴더>
+사용: uv run scripts/render_preview.py <상품폴더> [--open]
 """
 
-import sys
+import argparse
+import webbrowser
 from html import escape
 
 from lib import load_product, product_dir, store_config
@@ -79,7 +77,12 @@ def section(no, title, body):
 
 
 def main():
-    pdir = product_dir(sys.argv[1])
+    ap = argparse.ArgumentParser()
+    ap.add_argument("product")
+    ap.add_argument("--open", action="store_true", help="생성 후 브라우저로 열기")
+    args = ap.parse_args()
+
+    pdir = product_dir(args.product)
     data = load_product(pdir)
     cfg = store_config()
     checks = data.get("checks", {})
@@ -179,8 +182,11 @@ def main():
         f'<div class="meta">상태: {stage.get(data.get("status", {}).get("stage", "draft"), "작성 중")}'
         f' · 검증 시각: {escape(checks.get("checked_at", "-"))}</div>'
         f'<div class="summary">{summary}</div>{"".join(parts)}</div><script>{JS}</script></body></html>')
-    (pdir / "preview.html").write_text(html, encoding="utf-8")
-    print(f"미리보기 생성: {pdir / 'preview.html'}")
+    out = pdir / "preview.html"
+    out.write_text(html, encoding="utf-8")
+    print(f"미리보기 생성: {out}")
+    if args.open:
+        webbrowser.open(out.as_uri())
 
 
 if __name__ == "__main__":

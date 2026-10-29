@@ -1,0 +1,13 @@
+[project]
+name = "plant-agent"
+version = "0.1.0"
+description = "꿈을 심는 정원 상품 등록 작업공간"
+requires-python = ">=3.11"
+dependencies = [
+    "bcrypt",
+    "pillow",
+    "requests",
+]
+
+[tool.uv]
+package = false

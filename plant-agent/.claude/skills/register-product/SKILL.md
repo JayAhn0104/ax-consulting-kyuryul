@@ -10,11 +10,16 @@ description: 새 식물 상품의 네이버 스마트스토어 등록 정보를 
 
 ## 1. 입력 준비
 
-1. 상품 폴더 확인. 없으면 `products/YYYY-MM-DD_<상품명>/input/`을 만들고 사용자에게 사진을 넣어 달라고 안내한다.
-2. `templates/info.template.toml`을 `input/info.toml`로 복사해 채운다. 비어 있는 필수 정보는 한 번에 모아 묻는다.
+1. 상품 폴더 만들기 — 사진 출처에 따라:
+   - 채팅 첨부(경로를 알 때): `uv run scripts/new_product.py "<상품명>" --photos "<경로1>" "<경로2>" ...`
+   - 사진함: `uv run scripts/new_product.py "<상품명>"`
+   - 이미 상품 폴더가 있으면 이 단계를 건너뛴다.
+   스크립트가 `input/info.toml`과 `product.json` 양식을 함께 만든다.
+2. `input/info.toml`을 채운다. 비어 있는 필수 정보는 한 번에 모아 묻는다.
    - 식물 이름, 구성(수량), 매입가, 높이, 화분 지름
    - 정가는 사용자가 알려주면 입력하고, 모르면 비워 둔다 (임시 가격 규칙 적용)
-3. `templates/product.template.json`을 `product.json`으로 복사하고 `input` 항목을 채운다.
+   - 답을 받지 못한 항목은 비워 두고 진행한다 (상세설명에서 해당 항목 생략).
+3. `product.json`의 `input` 항목을 채운다.
 
 ## 2. 이미지
 
@@ -75,7 +80,7 @@ description: 새 식물 상품의 네이버 스마트스토어 등록 정보를 
 ## 8. 검증 · 미리보기
 
 1. `uv run scripts/validate.py products/<상품>` — 오류가 있으면 고치고 다시 실행한다.
-2. `uv run scripts/render_preview.py products/<상품>` 후 미리보기를 연다.
+2. `uv run scripts/render_preview.py products/<상품> --open` — 미리보기가 브라우저에서 열린다.
 3. 사용자에게 요약한다: 카테고리, 상품명, 판매가, 확인이 필요한 항목. 그리고 수정할 부분이 있는지 묻는다.
 4. log.md에 작성 일시, 주요 판단 근거, 사용자 수정 요청과 반영 내용을 기록한다.
 

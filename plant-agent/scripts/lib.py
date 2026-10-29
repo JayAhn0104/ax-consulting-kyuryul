@@ -8,6 +8,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "config"
 
+# Windows에서 출력이 파이프로 전달될 때 기본 인코딩(cp949) 대신 UTF-8 사용
+for stream in (sys.stdout, sys.stderr):
+    stream.reconfigure(encoding="utf-8", errors="replace")
+
 
 def load_toml(path: Path) -> dict:
     with open(path, "rb") as f:

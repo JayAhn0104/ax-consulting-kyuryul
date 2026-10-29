@@ -1,7 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["pillow"]
-# ///
 """detail.html을 상세 이미지(PNG)로 변환한다. 판매자센터에 이미지로 올리는 방식용.
 
 - 가로폭·분할 높이는 config/store.toml [detail] 설정을 따름
@@ -26,6 +22,7 @@ CANDIDATES = [
     "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
     r"C:\Program Files\Google\Chrome\Application\chrome.exe",
     r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+    r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
     r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
 ]
 MAX_RENDER_HEIGHT = 16000

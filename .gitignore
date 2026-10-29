@@ -3,3 +3,4 @@ __pycache__/
 .venv/
 _detail_render.html
 _detail_full.png
+스크린샷*.png
