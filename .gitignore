@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+.venv/
+_detail_render.html
+_detail_full.png

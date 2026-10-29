@@ -1,0 +1,4 @@
+config/secrets.env
+config/codes/*.json
+__pycache__/
+.DS_Store

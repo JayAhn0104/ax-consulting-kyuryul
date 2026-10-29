@@ -1,0 +1,252 @@
+{
+  "input": {
+    "name": "송오브인디아",
+    "composition": "1개",
+    "cost": 12000,
+    "notes": "높이 50~55cm, 화분 지름 15cm"
+  },
+  "category": {
+    "path": "",
+    "code": "",
+    "basis": "검색 API 미설정",
+    "search": {}
+  },
+  "name": {
+    "value": "송오브인디아 드라세나 외목대 실내 관엽식물 공기정화식물 반려식물",
+    "basis": "유통명(송오브인디아) + 속명(드라세나) + 사진상 수형(외목대) + 검색 키워드(실내, 관엽식물, 공기정화식물, 반려식물). 검색 API 연동 후 상위 상품명 기준으로 키워드 재검토 필요"
+  },
+  "detail": {
+    "file": "detail.html",
+    "images": [
+      "detail_images/detail-1.png",
+      "detail_images/detail-2.png"
+    ]
+  },
+  "tags": [
+    "드라세나송오브인디아",
+    "리플렉사",
+    "실내식물",
+    "인테리어식물",
+    "플랜테리어",
+    "무늬식물",
+    "사무실식물",
+    "집들이선물",
+    "개업선물",
+    "키우기쉬운식물"
+  ],
+  "attributes": [],
+  "seo": {
+    "page_title": "송오브인디아 드라세나 외목대 관엽식물",
+    "meta_description": "노란 줄무늬 잎이 시원하게 펼쳐지는 드라세나 송오브인디아. 거실, 창가, 사무실에 두기 좋은 외목대 관엽식물입니다."
+  },
+  "notice": {
+    "item_name": "송오브인디아",
+    "model_name": "상세설명 참조"
+  },
+  "status": {
+    "stage": "draft"
+  },
+  "images": {
+    "representative": {
+      "file": "images/rep.jpg",
+      "source": "KakaoTalk_Photo_2026-10-29-16-20-27 001.png",
+      "size": [
+        1000,
+        1000
+      ]
+    },
+    "optional": [
+      {
+        "file": "images/add-1.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-28 005.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-2.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 002.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-3.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-28 006.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-4.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 003.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-5.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 004.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      }
+    ],
+    "basis": "001: 실내 배경에 식물 전체가 보이는 보정 사진(1254px)으로 대표 선정. 추가이미지는 전체 모습(005) → 잎 무늬(002, 006) → 줄기(003) → 화분(004) 순",
+    "notes": []
+  },
+  "price": {
+    "list": 32900,
+    "discount_rate": 0.2,
+    "discount": 6580,
+    "sale": 26320,
+    "cost": 12000,
+    "markup": 2.19,
+    "provisional": true,
+    "basis": "임시 가격 규칙: 매입가 × 2.74 (100원 단위 반올림) + 기본할인율"
+  },
+  "checks": {
+    "checked_at": "2026-10-29T16:30:34",
+    "errors": 2,
+    "warnings": 2,
+    "items": [
+      {
+        "section": "카테고리",
+        "rule": "카테고리 선택",
+        "result": "error",
+        "detail": "카테고리 미정"
+      },
+      {
+        "section": "카테고리",
+        "rule": "카테고리 코드",
+        "result": "error",
+        "detail": "코드 없음 (API 등록 전 필요)"
+      },
+      {
+        "section": "상품명",
+        "rule": "글자수",
+        "result": "pass",
+        "detail": "35자"
+      },
+      {
+        "section": "상품명",
+        "rule": "금지 문자",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "혜택·홍보 문구 기재 금지",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "주관적 수식어 지양",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "쇼핑몰명 기재 금지",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "'1+1' 등 묶음 표기의 혜택 문구 해당 여부 확인 필요",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "동일 단어 반복 금지",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "판매가",
+        "rule": "판매가 범위·단위",
+        "result": "pass",
+        "detail": "32,900원"
+      },
+      {
+        "section": "판매가",
+        "rule": "할인율 범위 (1~99%)",
+        "result": "pass",
+        "detail": "20%"
+      },
+      {
+        "section": "판매가",
+        "rule": "가격 규칙",
+        "result": "warning",
+        "detail": "임시 가격 규칙으로 계산된 정가. 확인 필요"
+      },
+      {
+        "section": "상품이미지",
+        "rule": "대표이미지",
+        "result": "pass",
+        "detail": "KakaoTalk_Photo_2026-10-29-16-20-27 001.png"
+      },
+      {
+        "section": "상품이미지",
+        "rule": "추가이미지 개수",
+        "result": "pass",
+        "detail": "5장 / 최대 9장"
+      },
+      {
+        "section": "상세설명",
+        "rule": "필수 입력",
+        "result": "pass",
+        "detail": "2,516자"
+      },
+      {
+        "section": "상세설명",
+        "rule": "허용되지 않는 HTML",
+        "result": "pass",
+        "detail": "script·iframe·style·이벤트 속성은 네이버에서 제거됨"
+      },
+      {
+        "section": "상세설명",
+        "rule": "외부 링크",
+        "result": "pass",
+        "detail": "네이버 외부 연결 링크는 사용 제한"
+      },
+      {
+        "section": "상세설명",
+        "rule": "이미지 파일",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "검색설정",
+        "rule": "태그 개수",
+        "result": "pass",
+        "detail": "10개 / 최대 10개"
+      },
+      {
+        "section": "검색설정",
+        "rule": "태그 중복",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "검색설정",
+        "rule": "태그 형식 (공백·특수문자)",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "스토어 설정",
+        "rule": "API 등록용 설정값",
+        "result": "warning",
+        "detail": "미입력: 원산지 코드, A/S 전화번호, A/S 안내, 배송비 유형, 출고지 주소록 ID, 반품지 주소록 ID"
+      }
+    ]
+  }
+}

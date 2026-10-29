@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>식물 판매 파이프라인</title>
+<style>
+  :root {
+    --ink: #1F2328; --sub: #6B7280; --line: #9CA3AF;
+    --band: #F5F6F8; --node: #FFFFFF; --node-stroke: #D1D5DB;
+    --hot: #E8590C; --hot-bg: #FFF4E6;
+    --ch: #3B5BDB; --ch-bg: #EEF2FF; --ch-stroke: #A5B4FC;
+  }
+  body { margin: 0; background: #fff; font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; color: var(--ink); }
+  .wrap { width: 1090px; padding: 24px 20px 12px; box-sizing: border-box; }
+  h1 { font-size: 20px; margin: 0 0 2px 20px; }
+  p { font-size: 13px; color: var(--sub); margin: 0 0 4px 20px; }
+  svg text { font-family: inherit; }
+  .t  { font-size: 15px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+  .s  { font-size: 12px; fill: var(--sub); text-anchor: middle; }
+  .lb { font-size: 14px; font-weight: 700; fill: var(--ink); }
+  .lbs{ font-size: 12px; fill: var(--sub); }
+  .ar { font-size: 11px; fill: var(--sub); text-anchor: middle; }
+  .node { fill: var(--node); stroke: var(--node-stroke); stroke-width: 1.2; }
+  .hot  { fill: var(--hot-bg); stroke: var(--hot); stroke-width: 2; }
+  .flow { stroke: var(--line); stroke-width: 1.6; fill: none; }
+  .q circle { fill: #fff; stroke: var(--line); }
+  .q text { font-size: 11px; font-weight: 700; fill: var(--sub); text-anchor: middle; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>A. 식물 판매 — 꿈을 심는 정원</h1>
+  <p>업무 파이프라인 · 2026-10-29 인터뷰 기준</p>
+
+  <svg width="1050" height="400" viewBox="0 50 1050 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/>
+      </marker>
+      <g id="q" class="q"><circle r="9"/><text y="4">?</text></g>
+    </defs>
+
+    <!-- ① 상품 준비 -->
+    <rect x="0" y="60" width="820" height="150" rx="12" fill="var(--band)"/>
+    <text class="lb" x="16" y="84">① 상품 준비 <tspan class="lbs">· 신규 품종마다 반복</tspan></text>
+
+    <rect class="node" x="15"  y="112" width="160" height="64" rx="10"/>
+    <text class="t" x="95"  y="140">도매 매입</text><text class="s" x="95"  y="160">식물 선정·매입</text>
+    <use href="#q" x="171" y="116"/>
+
+    <rect class="node" x="215" y="112" width="160" height="64" rx="10"/>
+    <text class="t" x="295" y="140">창고 입고</text><text class="s" x="295" y="160">재고 보관</text>
+    <use href="#q" x="371" y="116"/>
+
+    <rect class="node" x="415" y="112" width="160" height="64" rx="10"/>
+    <text class="t" x="495" y="140">촬영</text><text class="s" x="495" y="160">직접 촬영</text>
+
+    <rect class="hot" x="615" y="112" width="160" height="64" rx="10"/>
+    <text class="t" x="695" y="140" style="fill:var(--hot)">상품 등록</text><text class="s" x="695" y="160">상품명·상세페이지 작성</text>
+    <text class="s" x="695" y="196" style="fill:var(--hot);font-weight:700">주요 병목 · 안건 1</text>
+
+    <path class="flow" d="M175,144 H213" marker-end="url(#arw)"/>
+    <path class="flow" d="M375,144 H413" marker-end="url(#arw)"/>
+    <path class="flow" d="M575,144 H613" marker-end="url(#arw)"/>
+
+    <!-- ② 주문 처리 (오른쪽 → 왼쪽) -->
+    <rect x="0" y="240" width="820" height="150" rx="12" fill="var(--band)"/>
+    <text class="lb" x="16" y="264">② 주문 처리 <tspan class="lbs">· 주문마다 반복 (← 방향)</tspan></text>
+
+    <rect class="node" x="615" y="292" width="160" height="64" rx="10"/>
+    <text class="t" x="695" y="320">주문 접수</text><text class="s" x="695" y="340">채널별 주문 확인</text>
+    <use href="#q" x="771" y="296"/>
+
+    <rect class="node" x="415" y="292" width="160" height="64" rx="10"/>
+    <text class="t" x="495" y="320">포장</text><text class="s" x="495" y="340">직접 포장</text>
+    <use href="#q" x="571" y="296"/>
+
+    <rect class="node" x="215" y="292" width="160" height="64" rx="10"/>
+    <text class="t" x="295" y="320">발송</text><text class="s" x="295" y="340">택배</text>
+    <use href="#q" x="371" y="296"/>
+
+    <rect class="node" x="15"  y="292" width="160" height="64" rx="10"/>
+    <text class="t" x="95"  y="320">배송 후 대응</text><text class="s" x="95"  y="340">CS·교환·반품</text>
+    <use href="#q" x="171" y="296"/>
+
+    <path class="flow" d="M615,324 H577" marker-end="url(#arw)"/>
+    <path class="flow" d="M415,324 H377" marker-end="url(#arw)"/>
+    <path class="flow" d="M215,324 H177" marker-end="url(#arw)"/>
+
+    <!-- 재고 출고 -->
+    <path class="flow" d="M295,176 L495,292" stroke-dasharray="5 4" marker-end="url(#arw)"/>
+    <text class="ar" x="430" y="229">재고 출고</text>
+
+    <!-- 판매 채널 -->
+    <rect x="860" y="96" width="180" height="276" rx="12" fill="var(--ch-bg)" stroke="var(--ch-stroke)"/>
+    <text class="lb" x="950" y="128" text-anchor="middle" style="fill:var(--ch)">판매 채널</text>
+    <rect x="876" y="186" width="148" height="40" rx="20" fill="#fff" stroke="var(--ch-stroke)"/>
+    <text class="t" x="950" y="211" style="font-size:13px">네이버 스마트스토어</text>
+    <rect x="876" y="242" width="148" height="40" rx="20" fill="#fff" stroke="var(--ch-stroke)"/>
+    <text class="t" x="950" y="267" style="font-size:13px">쿠팡</text>
+
+    <path class="flow" d="M775,144 H858" marker-end="url(#arw)"/>
+    <text class="ar" x="816" y="136">게시</text>
+    <path class="flow" d="M860,324 H777" marker-end="url(#arw)"/>
+    <text class="ar" x="818" y="316">주문</text>
+
+    <!-- 범례 -->
+    <g transform="translate(0,422)">
+      <rect x="0" y="-11" width="16" height="16" rx="4" class="hot"/>
+      <text class="lbs" x="24" y="2">주요 병목</text>
+      <use href="#q" x="128" y="-3"/>
+      <text class="lbs" x="144" y="2">확인 필요</text>
+      <path class="flow" d="M226,-3 H262" stroke-dasharray="5 4"/>
+      <text class="lbs" x="270" y="2">재고 이동</text>
+    </g>
+  </svg>
+</div>
+</body>
+</html>

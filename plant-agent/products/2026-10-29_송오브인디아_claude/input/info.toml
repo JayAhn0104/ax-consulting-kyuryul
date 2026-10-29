@@ -1,0 +1,10 @@
+# 상품 기본 정보. 에이전트가 사용자에게 물어 채움.
+
+name = "송오브인디아"
+composition = "1개"
+quantity = 1
+cost = 12000           # 도매가
+list_price = 0         # 미정 → 임시 가격 규칙 적용
+height = "50~55cm"     # 사용자 확인 (Codex 실행 시 답변과 동일 값)
+pot_diameter = "15cm"  # 사용자 확인
+notes = ""

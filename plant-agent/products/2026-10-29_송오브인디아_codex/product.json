@@ -1,0 +1,284 @@
+{
+  "input": {
+    "name": "송오브인디아",
+    "composition": "송오브인디아 1개",
+    "quantity": 1,
+    "height": "50~55cm",
+    "pot_diameter": "15cm",
+    "cost": 12000,
+    "notes": "사용자가 확인한 이름·치수·구성·도매가 반영. 필수 안내 문구: 식물 특성상 잎 무늬, 색감, 줄기 수형은\n개체마다 조금씩 다를 수 있습니다."
+  },
+  "category": {
+    "path": "",
+    "code": "",
+    "basis": "검색 API 미설정",
+    "search": {}
+  },
+  "name": {
+    "value": "송오브인디아 1개 관엽식물 실내 인테리어 노란무늬잎",
+    "basis": "사용자 제공 식물명·수량과 사진에서 관찰한 노란 잎 무늬를 반영. 검색 API 미설정으로 검색 결과 기반 키워드 선정은 생략하고 일반 분류·용도로 잠정 작성. 검색 수요와 노출 효과는 미검증이며 효능 과장 표현은 넣지 않음."
+  },
+  "detail": {
+    "file": "detail.html",
+    "basis": "기존 무늬아이비의 780px·녹색 제목·사진 중심 형식을 참고. 사용자 승인한 인테리어 배경 보정안을 첫 사진으로 적용하고 기존 원본 사진 6장도 유지. 사용자 확인 정보와 일반 관리법은 기존 확인한 RHS·NParks 자료를 참조. 수치 정보는 input/info.toml의 높이·화분 지름·구성만 사용.",
+    "sources": [
+      {
+        "title": "RHS: Dracaena reflexa",
+        "url": "https://www.rhs.org.uk/plants/65427/dracaena-reflexa/details"
+      },
+      {
+        "title": "RHS: How to grow dracaena",
+        "url": "https://www.rhs.org.uk/plants/dracaena/how-to-grow-dracaena"
+      },
+      {
+        "title": "NParks: Dracaena reflexa Song of India",
+        "url": "https://www.nparks.gov.sg/florafaunaweb/flora/1/9/1964"
+      }
+    ],
+    "images": [
+      "detail_images/detail-1.png",
+      "detail_images/detail-2.png",
+      "detail_images/detail-3.png"
+    ]
+  },
+  "tags": [
+    "드라세나",
+    "드라세나리플렉사",
+    "무늬식물",
+    "잎보기식물",
+    "실내가드닝",
+    "플랜테리어",
+    "거실식물",
+    "홈가드닝"
+  ],
+  "tags_basis": "상품명과 중복되지 않는 식물 별칭·분류·배치 용도의 잠정 연관어. 검색 API 미설정으로 추천 태그 사전·검색 수요는 확인하지 못함.",
+  "attributes": [],
+  "seo": {
+    "page_title": "송오브인디아 1개 관엽식물 실내 인테리어 노란무늬잎",
+    "meta_description": "초록 잎에 노란 무늬가 어우러진 송오브인디아 1개 구성입니다. 높이 50~55cm, 화분 지름 15cm이며 밝은 간접광이 드는 실내에서 관리해 주세요."
+  },
+  "notice": {
+    "item_name": "송오브인디아",
+    "model_name": "상세설명 참조"
+  },
+  "review_required": [
+    "정가 미제공으로 임시 가격 규칙 적용. 실제 판매 전 가격 확정 필요",
+    "검색 API 미설정으로 사용자 시험 지시에 따라 카테고리 경로·코드 공란",
+    "검색 API 미설정으로 상품명·태그는 잠정안",
+    "기존 스토어 설정의 과세·배송비 등 기본값은 이번 상품의 확정 판매 조건이 아님"
+  ],
+  "status": {
+    "stage": "draft"
+  },
+  "images": {
+    "representative": {
+      "file": "images/rep.jpg",
+      "source": "썸네일_인테리어_v1.png",
+      "size": [
+        1000,
+        1000
+      ]
+    },
+    "optional": [
+      {
+        "file": "images/add-1.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-28 005.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-2.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 002.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-3.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-28 006.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-4.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 003.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-5.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 004.jpeg",
+        "size": [
+          780,
+          780
+        ]
+      },
+      {
+        "file": "images/add-6.jpg",
+        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 001.png",
+        "size": [
+          1000,
+          1000
+        ]
+      }
+    ],
+    "basis": "사용자가 승인하고 적용 요청한 인테리어 배경 보정안을 대표이미지로 지정. 기존 전체 모습·잎·줄기·화분 사진 6장의 순서는 유지.",
+    "notes": []
+  },
+  "price": {
+    "list": 32900,
+    "discount_rate": 0.2,
+    "discount": 6580,
+    "sale": 26320,
+    "cost": 12000,
+    "markup": 2.19,
+    "provisional": true,
+    "basis": "임시 가격 규칙: 매입가 × 2.74 (100원 단위 반올림) + 기본할인율"
+  },
+  "checks": {
+    "checked_at": "2026-10-29T16:55:00",
+    "errors": 2,
+    "warnings": 2,
+    "items": [
+      {
+        "section": "카테고리",
+        "rule": "카테고리 선택",
+        "result": "error",
+        "detail": "카테고리 미정"
+      },
+      {
+        "section": "카테고리",
+        "rule": "카테고리 코드",
+        "result": "error",
+        "detail": "코드 없음 (API 등록 전 필요)"
+      },
+      {
+        "section": "상품명",
+        "rule": "글자수",
+        "result": "pass",
+        "detail": "28자"
+      },
+      {
+        "section": "상품명",
+        "rule": "금지 문자",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "혜택·홍보 문구 기재 금지",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "주관적 수식어 지양",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "쇼핑몰명 기재 금지",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "'1+1' 등 묶음 표기의 혜택 문구 해당 여부 확인 필요",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "상품명",
+        "rule": "동일 단어 반복 금지",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "판매가",
+        "rule": "판매가 범위·단위",
+        "result": "pass",
+        "detail": "32,900원"
+      },
+      {
+        "section": "판매가",
+        "rule": "할인율 범위 (1~99%)",
+        "result": "pass",
+        "detail": "20%"
+      },
+      {
+        "section": "판매가",
+        "rule": "가격 규칙",
+        "result": "warning",
+        "detail": "임시 가격 규칙으로 계산된 정가. 확인 필요"
+      },
+      {
+        "section": "상품이미지",
+        "rule": "대표이미지",
+        "result": "pass",
+        "detail": "썸네일_인테리어_v1.png"
+      },
+      {
+        "section": "상품이미지",
+        "rule": "추가이미지 개수",
+        "result": "pass",
+        "detail": "6장 / 최대 9장"
+      },
+      {
+        "section": "상세설명",
+        "rule": "필수 입력",
+        "result": "pass",
+        "detail": "2,032자"
+      },
+      {
+        "section": "상세설명",
+        "rule": "허용되지 않는 HTML",
+        "result": "pass",
+        "detail": "script·iframe·style·이벤트 속성은 네이버에서 제거됨"
+      },
+      {
+        "section": "상세설명",
+        "rule": "외부 링크",
+        "result": "pass",
+        "detail": "네이버 외부 연결 링크는 사용 제한"
+      },
+      {
+        "section": "상세설명",
+        "rule": "이미지 파일",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "검색설정",
+        "rule": "태그 개수",
+        "result": "pass",
+        "detail": "8개 / 최대 10개"
+      },
+      {
+        "section": "검색설정",
+        "rule": "태그 중복",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "검색설정",
+        "rule": "태그 형식 (공백·특수문자)",
+        "result": "pass",
+        "detail": ""
+      },
+      {
+        "section": "스토어 설정",
+        "rule": "API 등록용 설정값",
+        "result": "warning",
+        "detail": "미입력: 원산지 코드, A/S 전화번호, A/S 안내, 배송비 유형, 출고지 주소록 ID, 반품지 주소록 ID"
+      }
+    ]
+  }
+}

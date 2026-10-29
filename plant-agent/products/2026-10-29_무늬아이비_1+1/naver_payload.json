@@ -1,0 +1,116 @@
+{
+  "originProduct": {
+    "statusType": "SALE",
+    "saleType": "NEW",
+    "leafCategoryId": "",
+    "name": "무늬아이비 2개 세트 공기정화식물 실내 덩굴식물 행잉플랜트 반려식물",
+    "detailContent": "<div style=\"max-width:860px;margin:0 auto;font-size:16px;line-height:1.8;color:#333;text-align:center;\">\n\n  <h2 style=\"font-size:26px;margin:40px 0 10px;\">무늬아이비</h2>\n  <p style=\"color:#777;margin:0 0 30px;\">초록 잎 가장자리에 흰 무늬가 들어간 덩굴성 식물</p>\n  <p>별 모양의 작은 잎에 크림색 무늬가 어우러져 실내를 환하게 만들어 줍니다.<br>\n  줄기가 아래로 늘어지며 자라 선반 위나 행잉 화분에 두기 좋습니다.</p>\n\n  <h3 style=\"font-size:20px;margin:50px 0 10px;\">구성</h3>\n  <p><strong>무늬아이비 2개</strong> (1+1 구성)</p>\n\n  <img src=\"images/add-1.jpg\" style=\"width:100%;margin:30px 0 10px;\">\n  <img src=\"images/add-2.jpg\" style=\"width:100%;margin:10px 0;\">\n  <img src=\"images/add-3.jpg\" style=\"width:100%;margin:10px 0 30px;\">\n\n  <h3 style=\"font-size:20px;margin:50px 0 20px;\">키우는 법</h3>\n  <table style=\"width:100%;border-collapse:collapse;text-align:left;font-size:15px;\">\n    <tr><th style=\"width:90px;padding:12px;border-bottom:1px solid #eee;\">빛</th>\n        <td style=\"padding:12px;border-bottom:1px solid #eee;\">밝은 간접광이 드는 곳이 좋습니다. 빛이 부족하면 무늬가 옅어질 수 있습니다.</td></tr>\n    <tr><th style=\"padding:12px;border-bottom:1px solid #eee;\">물</th>\n        <td style=\"padding:12px;border-bottom:1px solid #eee;\">겉흙이 마르면 화분 아래로 물이 흘러나올 만큼 충분히 주세요. 과습에 주의해 주세요.</td></tr>\n    <tr><th style=\"padding:12px;border-bottom:1px solid #eee;\">온도</th>\n        <td style=\"padding:12px;border-bottom:1px solid #eee;\">서늘한 환경을 좋아합니다. 한여름 고온다습한 환경은 피해 주세요.</td></tr>\n    <tr><th style=\"padding:12px;border-bottom:1px solid #eee;\">통풍</th>\n        <td style=\"padding:12px;border-bottom:1px solid #eee;\">바람이 잘 통하는 곳에 두고, 건조할 때는 잎에 분무해 주세요.</td></tr>\n  </table>\n\n  <h3 style=\"font-size:20px;margin:50px 0 10px;\">배송 안내</h3>\n  <p>살아 있는 식물로 개체마다 잎의 모양과 무늬, 크기에 차이가 있습니다.<br>\n  받으신 후에는 상자에서 바로 꺼내 밝은 곳에 두고, 흙 상태를 확인한 뒤 물을 주세요.</p>\n\n  <h3 style=\"font-size:20px;margin:50px 0 10px;\">주의사항</h3>\n  <p style=\"margin-bottom:40px;\">아이비는 섭취 시 탈이 날 수 있는 성분이 있습니다.<br>\n  반려동물과 어린이의 손이 닿지 않는 곳에 두어 주세요.</p>\n\n</div>\n",
+    "images": {
+      "representativeImage": {
+        "url": "images/rep.jpg"
+      },
+      "optionalImages": [
+        {
+          "url": "images/add-1.jpg"
+        },
+        {
+          "url": "images/add-2.jpg"
+        },
+        {
+          "url": "images/add-3.jpg"
+        }
+      ]
+    },
+    "salePrice": 13700,
+    "stockQuantity": 99,
+    "deliveryInfo": {
+      "deliveryType": "DELIVERY",
+      "deliveryAttributeType": "NORMAL",
+      "deliveryCompany": "CJGLS",
+      "deliveryFee": {
+        "deliveryFeeType": "",
+        "baseFee": 0,
+        "freeConditionalAmount": 0
+      },
+      "claimDeliveryInfo": {
+        "returnDeliveryFee": 0,
+        "exchangeDeliveryFee": 0,
+        "shippingAddressId": "",
+        "returnAddressId": ""
+      }
+    },
+    "detailAttribute": {
+      "naverShoppingSearchInfo": {
+        "brandName": "",
+        "manufacturerName": ""
+      },
+      "afterServiceInfo": {
+        "afterServiceTelephoneNumber": "",
+        "afterServiceGuideContent": ""
+      },
+      "originAreaInfo": {
+        "originAreaCode": "",
+        "content": ""
+      },
+      "minorPurchasable": true,
+      "taxType": "TAX",
+      "productInfoProvidedNotice": {
+        "productInfoProvidedNoticeType": "ETC",
+        "etc": {
+          "itemName": "무늬아이비",
+          "modelName": "상세설명 참조",
+          "manufacturer": "",
+          "customerServicePhoneNumber": ""
+        }
+      },
+      "seoInfo": {
+        "pageTitle": "무늬아이비 2개 세트 공기정화식물",
+        "metaDescription": "잎 가장자리에 흰 무늬가 들어간 무늬아이비 2개 구성. 밝은 실내에서 키우기 좋은 덩굴성 식물입니다.",
+        "sellerTags": [
+          {
+            "text": "아이비"
+          },
+          {
+            "text": "아이비화분"
+          },
+          {
+            "text": "헤데라"
+          },
+          {
+            "text": "실내식물"
+          },
+          {
+            "text": "행잉식물"
+          },
+          {
+            "text": "초보식물"
+          },
+          {
+            "text": "키우기쉬운식물"
+          },
+          {
+            "text": "인테리어식물"
+          },
+          {
+            "text": "집들이선물"
+          },
+          {
+            "text": "실내정원"
+          }
+        ]
+      }
+    },
+    "customerBenefit": {
+      "immediateDiscountPolicy": {
+        "discountMethod": {
+          "value": 20,
+          "unitType": "PERCENT"
+        }
+      }
+    }
+  },
+  "smartstoreChannelProduct": {
+    "naverShoppingRegistration": true,
+    "channelProductDisplayStatusType": "SUSPENSION"
+  }
+}

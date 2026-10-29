@@ -1,0 +1,48 @@
+# 스토어 공통 설정값. 모든 상품에 동일하게 적용됨.
+# 값이 비어 있는 항목("")은 API 등록 전에 반드시 채워야 함.
+
+[store]
+name = "꿈을 심는 정원"
+
+[price]
+discount_rate = 0.20          # 기본할인(즉시할인) 비율
+unit = 10                     # 판매가 단위(원)
+# 가격 규칙(매입가 → 정가). 확정 전 임시값: 무늬아이비 사례(매입가 5,000원 → 정가 13,700원) 비율.
+# info.toml에 list_price가 있으면 그 값이 우선함.
+provisional_multiplier = 2.74
+list_price_round = 100        # 정가 반올림 단위(원)
+
+[detail]
+width = 780                   # 상세 이미지 가로(px). 클라이언트 기존 상세페이지 기준
+split_height = 3000           # 상세 이미지 분할 높이(px)
+
+[product]
+sale_type = "NEW"             # 상품상태: 신상품
+stock_quantity = 99           # 기본 재고수량
+minor_purchasable = true      # 미성년자 구매 가능
+tax_type = "TAX"              # 과세(TAX) / 면세(DUTYFREE) — 화훼류 면세 여부 세무 확인 필요
+brand = ""
+manufacturer = ""
+
+[origin]
+area_code = ""                # 원산지 코드 (국산). 커머스API 원산지 코드 조회 후 기입
+content = ""                  # 원산지 표시 문구
+
+[after_service]
+phone = ""                    # A/S 전화번호
+guide = ""                    # A/S 안내 문구
+
+[notice]                      # 상품정보제공고시
+type = "ETC"                  # 기타 재화 (식물 상품군 확인 필요)
+manufacturer = ""
+customer_service_phone = ""
+
+[delivery]
+company = "CJGLS"             # 택배사 코드
+fee_type = ""                 # FREE / CONDITIONAL_FREE / PAID
+base_fee = 0
+free_conditional_amount = 0
+return_fee = 0                # 반품배송비(편도)
+exchange_fee = 0              # 교환배송비(왕복)
+shipping_address_id = ""      # 판매자센터 출고지 주소록 ID
+return_address_id = ""        # 판매자센터 반품지 주소록 ID

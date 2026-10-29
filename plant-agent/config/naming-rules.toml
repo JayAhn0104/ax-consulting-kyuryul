@@ -1,0 +1,37 @@
+# 네이버 상품명 규칙. validate.py가 이 목록으로 상품명을 검사함.
+# severity: "error" = 등록 불가, "warning" = 확인 후 판단
+# 출처: 네이버 일괄등록 양식(글자수·금지문자), 판매자 가이드(혜택 문구·반복 금지).
+# 클라이언트가 참고하는 네이버 공식 가이드 원문 확보 시 갱신.
+
+max_length = 100
+recommended_max_length = 50
+forbidden_chars = ['\', '*', '?', '"', '<', '>']
+
+[[rules]]
+id = "promo_words"
+severity = "error"
+description = "혜택·홍보 문구 기재 금지"
+words = ["무료배송", "할인", "특가", "세일", "최저가", "이벤트", "쿠폰", "사은품", "당일발송", "당일배송", "증정"]
+
+[[rules]]
+id = "subjective_words"
+severity = "warning"
+description = "주관적 수식어 지양"
+words = ["추천", "인기", "베스트", "BEST", "1위", "최고", "대박", "강추"]
+
+[[rules]]
+id = "store_name"
+severity = "error"
+description = "쇼핑몰명 기재 금지"
+words = ["꿈을 심는 정원", "꿈을심는정원"]
+
+[[rules]]
+id = "bundle_expression"
+severity = "warning"
+description = "'1+1' 등 묶음 표기의 혜택 문구 해당 여부 확인 필요"
+words = ["1+1", "2+1"]
+
+[repeat]
+severity = "error"
+description = "동일 단어 반복 금지"
+max_occurrences = 1

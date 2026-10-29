@@ -1,0 +1,10 @@
+# 상품 기본 정보. 에이전트가 사용자에게 물어 채움.
+
+name = "무늬아이비"
+composition = "2개 묶음"
+quantity = 2
+cost = 5000            # 2,500원 × 2
+list_price = 13700     # 클라이언트 실제 등록값
+height = "15~20cm"     # 클라이언트 기존 상세페이지 기준
+pot_diameter = "10cm"  # 클라이언트 기존 상세페이지 기준
+notes = ""
