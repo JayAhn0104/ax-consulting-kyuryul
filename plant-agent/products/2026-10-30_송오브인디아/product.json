@@ -7,50 +7,79 @@
     "list_price": 0,
     "height": "50~55cm",
     "pot_diameter": "15cm",
-    "notes": "식물 특성상 잎 무늬, 색감, 줄기 수형은\n개체마다 조금씩 다를 수 있습니다."
+    "notes": ""
   },
   "category": {
     "path": "생활/건강>원예/식물>공기정화식물",
     "code": "50001782",
-    "basis": "드라세나류는 공기정화식물로 통용. 최근 3개월 카테고리 클릭량이 관엽식물의 1.6배. (테스트 등록용, 컨설턴트 확정)",
+    "basis": "잎을 감상하는 실내 식물에 맞는 두 후보 중 최근 3개월 클릭 수요가 더 높은 공기정화식물로 골랐습니다.",
     "candidates": [
       {
         "path": "생활/건강>원예/식물>공기정화식물",
         "code": "50001782",
-        "reason": "드라세나류 공기정화식물로 통용",
-        "demand": 164.2
+        "reason": "실내에서 기르는 드라세나류에 쓰이는 분류이며 두 후보 중 클릭 수요가 높음. 효능을 보장하는 표현은 상세설명에서 사용하지 않음.",
+        "demand": 100.0
       },
       {
         "path": "생활/건강>원예/식물>관엽식물",
         "code": "50001783",
-        "reason": "잎을 감상하는 실내 관엽식물",
-        "demand": 100.0
+        "reason": "무늬 잎을 감상하는 식물로 특성이 맞으나 비교 클릭 수요가 낮음.",
+        "demand": 60.9
       }
-    ],
-    "confirmed": true
+    ]
   },
   "name": {
-    "value": "송오브인디아 1개 노란무늬 곡선수형",
-    "basis": "사용자 식물명·구성 및 원본 사진에서 확인한 노란 잎 가장자리와 휘어진 줄기 반영. 검색 미연동으로 검색 키워드 추정 생략."
+    "value": "송오브인디아 1개 공기정화식물 노란무늬 외목대",
+    "basis": "비교한 표기 중 클릭 수요가 가장 높은 송오브인디아를 앞에 놓았습니다. 구성과 카테고리 검색어 뒤에 사진에서 보이는 노란 잎 무늬와 외목대 형태를 담았습니다.",
+    "parts": [
+      {
+        "text": "송오브인디아",
+        "source": "식물명"
+      },
+      {
+        "text": "1개",
+        "source": "구성"
+      },
+      {
+        "text": "공기정화식물",
+        "source": "키워드"
+      },
+      {
+        "text": "노란무늬 외목대",
+        "source": "특징"
+      }
+    ],
+    "keywords": [
+      {
+        "keyword": "송오브인디아",
+        "score": 100.0,
+        "used": true
+      },
+      {
+        "keyword": "드라세나",
+        "score": 65.6,
+        "used": false
+      },
+      {
+        "keyword": "송오브인디애",
+        "score": 0.0,
+        "used": false
+      }
+    ]
   },
   "detail": {
     "file": "detail.html",
-    "intro": "노란 잎 무늬와 부드러운 줄기 곡선이 어우러진",
-    "display_name": "송오브인디아 1개",
-    "description": [
-      "초록 잎 가장자리에 노란 무늬가 둘러져 산뜻한 인상을 주는 식물입니다.",
-      "가늘고 자연스럽게 휘어진 줄기가 돋보이며, 밝은 거실이나 창가 주변에 두어 초록 포인트를 더하기 좋습니다."
+    "basis": "높이·화분 지름·구성은 알려주신 정보를 사용하고, 무늬와 줄기 형태는 사진에 맞춰 썼습니다. 관리법과 반려동물 섭취 주의는 일반 원예 자료를 참고했습니다.",
+    "sources": [
+      {
+        "title": "RHS 송오브인디아 관리 안내",
+        "url": "https://www.rhs.org.uk/plants/256029/dracaena-reflexa-song-of-india-v/details"
+      },
+      {
+        "title": "NC State Extension 드라세나 관리 안내",
+        "url": "https://plants.ces.ncsu.edu/plants/dracaena-reflexa-var-reflexa/"
+      }
     ],
-    "care": {
-      "빛": "밝은 간접광이 드는 곳에 두고, 강한 직사광선은 피해 주세요.",
-      "물": "흙의 마른 상태를 확인한 뒤 물을 주고, 받침에 고인 물은 버려 주세요. 과습에 주의해 주세요.",
-      "온도": "따뜻한 실내에서 기르고, 찬바람과 갑작스러운 온도 변화는 피해 주세요.",
-      "통풍": "공기가 부드럽게 순환하는 곳에 두고, 잎이 오래 젖어 있지 않도록 해 주세요."
-    },
-    "required_notice": "식물 특성상 잎 무늬, 색감, 줄기 수형은\n개체마다 조금씩 다를 수 있습니다.",
-    "safety_notice": "반려동물이 잎을 먹지 않도록 손이 닿지 않는 곳에 두어 주세요.",
-    "staging_notice": "대표사진은 인테리어 배경을 보정한 연출 이미지입니다. 실제 모습은 아래 원본 사진도 함께 확인해 주세요.",
-    "basis": "사용자 규격과 필수 문구, 첨부 원본의 모습에 근거. 관리 안내 출처: https://plants.ces.ncsu.edu/plants/dracaena-reflexa-var-reflexa/",
     "images": [
       "detail_images/detail-1.png",
       "detail_images/detail-2.png",
@@ -58,33 +87,47 @@
     ]
   },
   "tags": [
+    "드라세나",
     "실내식물",
-    "인테리어식물",
     "무늬식물",
-    "드라세나"
+    "거실식물"
+  ],
+  "tag_basis": [
+    {
+      "tag": "드라세나",
+      "reason": "식물의 분류 이름으로 찾는 검색에 대응합니다."
+    },
+    {
+      "tag": "실내식물",
+      "reason": "실내에서 기르는 용도와 관련된 검색어입니다."
+    },
+    {
+      "tag": "무늬식물",
+      "reason": "노란 가장자리 무늬가 있는 잎의 특징을 반영합니다."
+    },
+    {
+      "tag": "거실식물",
+      "reason": "밝은 거실에 두는 용도를 찾는 검색어입니다."
+    }
   ],
   "attributes": [],
   "seo": {
-    "page_title": "송오브인디아 1개 노란무늬 곡선수형",
-    "meta_description": "노란 가장자리와 초록 잎이 어우러진 송오브인디아 1개. 높이 50~55cm, 화분 지름 15cm. 개체마다 잎 무늬, 색감, 줄기 수형은 조금씩 다를 수 있습니다."
+    "page_title": "송오브인디아 1개 공기정화식물 노란무늬 외목대",
+    "meta_description": "노란 가장자리 무늬와 자연스럽게 휘어진 줄기가 돋보이는 송오브인디아 1개 구성입니다. 높이 50~55cm, 화분 지름 15cm입니다.",
+    "basis": "상품명과 알려주신 규격, 사진에서 확인되는 특징으로 작성했습니다."
   },
   "notice": {
     "item_name": "송오브인디아",
-    "model_name": "송오브인디아 1개 노란무늬 곡선수형"
+    "model_name": "송오브인디아 1개 공기정화식물 노란무늬 외목대"
   },
   "status": {
-    "stage": "private"
-  },
-  "basis": {
-    "workflow": "2026-10-29 사용자가 커머스API로 시험 등록 명시 승인. 비공개 등록 후 재조회 검증, 판매 공개는 별도 요청 필요.",
-    "thumbnail": "전체 모습 원본 005를 바탕으로 내장 이미지 보정 도구 사용. 배경을 아이보리 벽과 밝은 원목 상판으로 변경, 식물·기존 화분 유지 요청. 원본 추가이미지로 실제 모습 병기.",
-    "price": "사용자가 스토어 기존 임시 가격 기준 적용 승인",
-    "tags": "네이버 등록 응답에서 관엽식물이 등록불가 태그로 확인되어 해당 태그만 제외."
+    "stage": "private",
+    "approval_note": "사용자가 미리보기 검토 후 실제 판매스토어 등록을 요청함. 정가 32,900원, 기본할인 20%, 할인 후 26,320원으로 비공개 등록 승인."
   },
   "images": {
     "representative": {
       "file": "images/rep.jpg",
-      "source": "대표_인테리어.png",
+      "source": "KakaoTalk_Photo_2026-10-30-14-08-27 001.png",
       "size": [
         1000,
         1000
@@ -93,7 +136,7 @@
     "optional": [
       {
         "file": "images/add-1.jpg",
-        "source": "KakaoTalk_Photo_2026-10-29-16-20-28 005.jpeg",
+        "source": "KakaoTalk_Photo_2026-10-30-14-08-27 005.jpeg",
         "size": [
           780,
           780
@@ -101,7 +144,7 @@
       },
       {
         "file": "images/add-2.jpg",
-        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 002.jpeg",
+        "source": "KakaoTalk_Photo_2026-10-30-14-08-27 002.jpeg",
         "size": [
           780,
           780
@@ -109,7 +152,7 @@
       },
       {
         "file": "images/add-3.jpg",
-        "source": "KakaoTalk_Photo_2026-10-29-16-20-28 006.jpeg",
+        "source": "KakaoTalk_Photo_2026-10-30-14-08-27 006.jpeg",
         "size": [
           780,
           780
@@ -117,7 +160,7 @@
       },
       {
         "file": "images/add-4.jpg",
-        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 003.jpeg",
+        "source": "KakaoTalk_Photo_2026-10-30-14-08-27 003.jpeg",
         "size": [
           780,
           780
@@ -125,14 +168,14 @@
       },
       {
         "file": "images/add-5.jpg",
-        "source": "KakaoTalk_Photo_2026-10-29-16-20-27 004.jpeg",
+        "source": "KakaoTalk_Photo_2026-10-30-14-08-27 004.jpeg",
         "size": [
           780,
           780
         ]
       }
     ],
-    "basis": "보정된 인테리어 배경 전체 사진을 대표로 사용. 추가는 원본 전체→잎 무늬→상단→곡선 줄기→화분 순서로 실제 모습 확인.",
+    "basis": "식물 전체와 화분이 보이고 배경이 정돈된 연출 사진을 대표로 골랐습니다. 추가 사진은 전체 모습, 잎 무늬, 줄기와 화분 순서로 배치했습니다.",
     "notes": []
   },
   "price": {
@@ -146,7 +189,7 @@
     "basis": "임시 가격 규칙: 매입가 × 2.74 (100원 단위 반올림) + 기본할인율"
   },
   "checks": {
-    "checked_at": "2026-10-30T13:54:04",
+    "checked_at": "2026-10-30T14:19:06",
     "errors": 0,
     "warnings": 1,
     "items": [
@@ -183,7 +226,7 @@
         "label": "글자수",
         "question": "상품명이 100자 이하인가? (권장 50자 이내)",
         "result": "pass",
-        "detail": "19자",
+        "detail": "25자",
         "decision": false
       },
       {
@@ -273,7 +316,7 @@
         "label": "대표이미지",
         "question": "대표이미지가 있나?",
         "result": "pass",
-        "detail": "대표_인테리어.png",
+        "detail": "KakaoTalk_Photo_2026-10-30-14-08-27 001.png",
         "decision": false
       },
       {
@@ -291,7 +334,7 @@
         "label": "필수 입력",
         "question": "내용이 입력되었나?",
         "result": "pass",
-        "detail": "2,254자",
+        "detail": "2,632자",
         "decision": false
       },
       {
@@ -370,14 +413,14 @@
   },
   "naver": {
     "image_urls": {
-      "images/rep.jpg": "https://shop-phinf.pstatic.net/20261029_209/1793278299595elU95_JPEG/61295135730521035_584671624.jpg",
+      "images/rep.jpg": "https://shop-phinf.pstatic.net/20261030_6/1793337500412OeheK_JPEG/127470316538750162_2028916757.jpg",
       "images/add-1.jpg": "https://shop-phinf.pstatic.net/20261029_62/1793278299881cGTz3_JPEG/61295136017279918_991803608.jpg",
       "images/add-2.jpg": "https://shop-phinf.pstatic.net/20261029_73/1793278300159wW5ue_JPEG/61295136294250143_1102502928.jpg",
       "images/add-3.jpg": "https://shop-phinf.pstatic.net/20261029_145/1793278300513iR7QW_JPEG/61295136648710772_687878360.jpg",
       "images/add-4.jpg": "https://shop-phinf.pstatic.net/20261029_190/1793278300859AQS7B_JPEG/61295136995581828_1116044067.jpg",
       "images/add-5.jpg": "https://shop-phinf.pstatic.net/20261029_74/1793278301125qzdG6_JPEG/61295137260417489_1975014174.jpg"
     },
-    "origin_product_no": 13777345461,
-    "channel_product_no": 13838777514
+    "origin_product_no": 13778644157,
+    "channel_product_no": 13840082493
   }
 }
