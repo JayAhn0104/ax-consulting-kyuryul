@@ -94,135 +94,216 @@
     "basis": "클라이언트 입력 정가 + 기본할인율"
   },
   "checks": {
-    "checked_at": "2026-10-29T16:15:31",
+    "checked_at": "2026-10-30T13:54:04",
     "errors": 2,
-    "warnings": 1,
+    "warnings": 0,
     "items": [
+      {
+        "section": "입력 정보",
+        "rule": "상품 규격",
+        "label": "상품 규격",
+        "question": "상세페이지에 쓸 높이·화분 지름 정보가 있나?",
+        "result": "pass",
+        "detail": "모두 있음",
+        "decision": false
+      },
       {
         "section": "카테고리",
         "rule": "카테고리 선택",
+        "label": "카테고리",
+        "question": "카테고리가 선택되었나?",
         "result": "error",
-        "detail": "카테고리 미정"
+        "detail": "카테고리 미정",
+        "decision": false
       },
       {
         "section": "카테고리",
         "rule": "카테고리 코드",
+        "label": "카테고리 코드",
+        "question": "네이버 등록에 필요한 카테고리 코드가 있나?",
         "result": "error",
-        "detail": "코드 없음 (API 등록 전 필요)"
+        "detail": "코드 없음 (네이버 등록 전 필요)",
+        "decision": false
       },
       {
         "section": "상품명",
         "rule": "글자수",
+        "label": "글자수",
+        "question": "상품명이 100자 이하인가? (권장 50자 이내)",
         "result": "pass",
-        "detail": "37자"
+        "detail": "37자",
+        "decision": false
       },
       {
         "section": "상품명",
         "rule": "금지 문자",
+        "label": "금지 문자",
+        "question": "네이버가 허용하지 않는 특수문자( \\ * ? \" < > )가 없나?",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "상품명",
         "rule": "혜택·홍보 문구 기재 금지",
+        "label": "홍보 문구",
+        "question": "'무료배송·할인·특가' 같은 홍보 문구가 없나?",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "상품명",
         "rule": "주관적 수식어 지양",
+        "label": "과장 표현",
+        "question": "'추천·인기·베스트' 같은 과장 표현이 없나?",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "상품명",
         "rule": "쇼핑몰명 기재 금지",
+        "label": "스토어 이름",
+        "question": "스토어 이름이 들어가 있지 않나?",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "상품명",
         "rule": "'1+1' 등 묶음 표기의 혜택 문구 해당 여부 확인 필요",
+        "label": "묶음 표기",
+        "question": "'1+1' 같은 묶음 표기가 없나? (혜택 문구로 볼 수 있음)",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "상품명",
         "rule": "동일 단어 반복 금지",
+        "label": "단어 반복",
+        "question": "같은 단어를 두 번 이상 쓰지 않았나?",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "판매가",
         "rule": "판매가 범위·단위",
+        "label": "가격 단위",
+        "question": "정가가 10원 단위이고 네이버 허용 범위 안인가?",
         "result": "pass",
-        "detail": "13,700원"
+        "detail": "13,700원",
+        "decision": false
       },
       {
         "section": "판매가",
         "rule": "할인율 범위 (1~99%)",
+        "label": "할인율",
+        "question": "할인율이 1~99% 사이인가?",
         "result": "pass",
-        "detail": "20%"
+        "detail": "20%",
+        "decision": false
       },
       {
         "section": "상품이미지",
         "rule": "대표이미지",
+        "label": "대표이미지",
+        "question": "대표이미지가 있나?",
         "result": "pass",
-        "detail": "썸네일.png"
+        "detail": "썸네일.png",
+        "decision": false
       },
       {
         "section": "상품이미지",
         "rule": "추가이미지 개수",
+        "label": "추가이미지",
+        "question": "추가이미지가 9장 이하인가?",
         "result": "pass",
-        "detail": "3장 / 최대 9장"
+        "detail": "3장 / 최대 9장",
+        "decision": false
       },
       {
         "section": "상세설명",
         "rule": "필수 입력",
+        "label": "필수 입력",
+        "question": "내용이 입력되었나?",
         "result": "pass",
-        "detail": "2,333자"
+        "detail": "2,333자",
+        "decision": false
       },
       {
         "section": "상세설명",
         "rule": "허용되지 않는 HTML",
+        "label": "금지 코드",
+        "question": "네이버가 자동으로 지우는 코드(스크립트 등)가 없나?",
         "result": "pass",
-        "detail": "script·iframe·style·이벤트 속성은 네이버에서 제거됨"
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "상세설명",
         "rule": "외부 링크",
+        "label": "외부 링크",
+        "question": "네이버 밖으로 연결되는 링크가 없나?",
         "result": "pass",
-        "detail": "네이버 외부 연결 링크는 사용 제한"
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "상세설명",
         "rule": "이미지 파일",
+        "label": "사진 파일",
+        "question": "상세설명에 넣은 사진 파일이 모두 있나?",
         "result": "pass",
-        "detail": ""
+        "detail": "모두 있음",
+        "decision": false
       },
       {
         "section": "검색설정",
         "rule": "태그 개수",
+        "label": "태그 개수",
+        "question": "태그가 10개 이하인가?",
         "result": "pass",
-        "detail": "10개 / 최대 10개"
+        "detail": "10개 / 최대 10개",
+        "decision": false
       },
       {
         "section": "검색설정",
         "rule": "태그 중복",
+        "label": "태그 중복",
+        "question": "같은 태그가 중복되지 않았나?",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "검색설정",
         "rule": "태그 형식 (공백·특수문자)",
+        "label": "태그 형식",
+        "question": "태그에 띄어쓰기·특수문자가 없나?",
         "result": "pass",
-        "detail": ""
+        "detail": "없음",
+        "decision": false
+      },
+      {
+        "section": "검색설정",
+        "rule": "네이버 등록 불가 태그",
+        "label": "등록 불가 태그",
+        "question": "네이버가 등록을 거절한 적 있는 태그가 없나?",
+        "result": "pass",
+        "detail": "없음",
+        "decision": false
       },
       {
         "section": "스토어 설정",
         "rule": "API 등록용 설정값",
-        "result": "warning",
-        "detail": "미입력: 원산지 코드, A/S 전화번호, A/S 안내, 배송비 유형, 출고지 주소록 ID, 반품지 주소록 ID"
+        "label": "스토어 설정",
+        "question": "네이버 등록에 필요한 스토어 설정(주소·A/S 등)이 모두 있나?",
+        "result": "pass",
+        "detail": "모두 있음",
+        "decision": false
       }
     ]
   }

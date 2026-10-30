@@ -1,0 +1,107 @@
+{
+  "originProduct": {
+    "statusType": "SALE",
+    "saleType": "NEW",
+    "leafCategoryId": "50001782",
+    "name": "송오브인디아 1개 노란무늬 곡선수형",
+    "detailContent": "<div style=\"max-width:780px;margin:0 auto;font-size:17px;line-height:1.8;color:#333;text-align:center;\">\n<p style=\"font-size:21px;margin:50px 20px 0;\">노란 잎 무늬와 부드러운 줄기 곡선이 어우러진</p>\n<h2 style=\"font-size:32px;color:#2E8B3A;margin:4px 0 30px;\">송오브인디아 1개</h2>\n<img src=\"images/rep.jpg\" style=\"width:100%;margin:0 0 10px;\">\n<p style=\"font-size:14px;color:#777;margin:0 24px 30px;\">대표사진은 인테리어 배경을 보정한 연출 이미지입니다. 실제 모습은 아래 원본 사진도 함께 확인해 주세요.</p>\n<p style=\"margin:0 24px 30px;\">초록 잎 가장자리에 노란 무늬가 둘러져 산뜻한 인상을 주는 식물입니다.<br>가늘고 자연스럽게 휘어진 줄기가 돋보이며, 밝은 거실이나 창가 주변에 두어 초록 포인트를 더하기 좋습니다.</p>\n<img src=\"images/add-1.jpg\" style=\"width:100%;margin:10px 0 24px;\">\n<img src=\"images/add-2.jpg\" style=\"width:100%;margin:10px 0 24px;\">\n<img src=\"images/add-3.jpg\" style=\"width:100%;margin:10px 0 24px;\">\n<img src=\"images/add-4.jpg\" style=\"width:100%;margin:10px 0 24px;\">\n<img src=\"images/add-5.jpg\" style=\"width:100%;margin:10px 0 24px;\">\n<h3 style=\"display:inline-block;font-size:21px;background:#2E8B3A;color:#fff;padding:4px 14px;margin:40px 0 16px;\">상품 정보</h3>\n<div style=\"margin:0 24px 30px;\"><p style=\"margin:8px 0;\"><strong>높이</strong>　50~55cm</p><p style=\"margin:8px 0;\"><strong>화분 지름</strong>　15cm</p><p style=\"margin:8px 0;\"><strong>구성</strong>　송오브인디아 1개</p></div>\n<h3 style=\"display:inline-block;font-size:21px;background:#2E8B3A;color:#fff;padding:4px 14px;margin:40px 0 16px;\">키우는 법</h3>\n<div style=\"text-align:left;margin:0 28px;\"><p style=\"padding:12px 0;margin:0;border-bottom:1px solid #eee;\"><strong>빛</strong><br>밝은 간접광이 드는 곳에 두고, 강한 직사광선은 피해 주세요.</p><p style=\"padding:12px 0;margin:0;border-bottom:1px solid #eee;\"><strong>물</strong><br>흙의 마른 상태를 확인한 뒤 물을 주고, 받침에 고인 물은 버려 주세요. 과습에 주의해 주세요.</p><p style=\"padding:12px 0;margin:0;border-bottom:1px solid #eee;\"><strong>온도</strong><br>따뜻한 실내에서 기르고, 찬바람과 갑작스러운 온도 변화는 피해 주세요.</p><p style=\"padding:12px 0;margin:0;border-bottom:1px solid #eee;\"><strong>통풍</strong><br>공기가 부드럽게 순환하는 곳에 두고, 잎이 오래 젖어 있지 않도록 해 주세요.</p></div>\n<h3 style=\"display:inline-block;font-size:21px;background:#2E8B3A;color:#fff;padding:4px 14px;margin:40px 0 16px;\">안내 사항</h3>\n<p style=\"margin:10px 24px 24px;\">식물 특성상 잎 무늬, 색감, 줄기 수형은<br>개체마다 조금씩 다를 수 있습니다.</p>\n<p style=\"margin:0 24px 50px;\">반려동물이 잎을 먹지 않도록 손이 닿지 않는 곳에 두어 주세요.</p>\n</div>\n",
+    "images": {
+      "representativeImage": {
+        "url": "images/rep.jpg"
+      },
+      "optionalImages": [
+        {
+          "url": "images/add-1.jpg"
+        },
+        {
+          "url": "images/add-2.jpg"
+        },
+        {
+          "url": "images/add-3.jpg"
+        },
+        {
+          "url": "images/add-4.jpg"
+        },
+        {
+          "url": "images/add-5.jpg"
+        }
+      ]
+    },
+    "salePrice": 32900,
+    "stockQuantity": 99,
+    "deliveryInfo": {
+      "deliveryType": "DELIVERY",
+      "deliveryAttributeType": "NORMAL",
+      "deliveryCompany": "CJGLS",
+      "deliveryFee": {
+        "deliveryFeeType": "FREE",
+        "baseFee": 0,
+        "freeConditionalAmount": 0
+      },
+      "claimDeliveryInfo": {
+        "returnDeliveryFee": 3000,
+        "exchangeDeliveryFee": 6000,
+        "shippingAddressId": 200697600,
+        "returnAddressId": 200697599
+      }
+    },
+    "detailAttribute": {
+      "naverShoppingSearchInfo": {
+        "brandName": "",
+        "manufacturerName": ""
+      },
+      "afterServiceInfo": {
+        "afterServiceTelephoneNumber": "010-1234-5678",
+        "afterServiceGuideContent": "상품 문의는 스토어 톡톡으로 남겨 주세요."
+      },
+      "originAreaInfo": {
+        "originAreaCode": "00",
+        "content": ""
+      },
+      "minorPurchasable": true,
+      "taxType": "TAX",
+      "productInfoProvidedNotice": {
+        "productInfoProvidedNoticeType": "ETC",
+        "etc": {
+          "itemName": "송오브인디아",
+          "modelName": "송오브인디아 1개 노란무늬 곡선수형",
+          "manufacturer": "상세설명 참조",
+          "customerServicePhoneNumber": "010-1234-5678"
+        }
+      },
+      "seoInfo": {
+        "pageTitle": "송오브인디아 1개 노란무늬 곡선수형",
+        "metaDescription": "노란 가장자리와 초록 잎이 어우러진 송오브인디아 1개. 높이 50~55cm, 화분 지름 15cm. 개체마다 잎 무늬, 색감, 줄기 수형은 조금씩 다를 수 있습니다.",
+        "sellerTags": [
+          {
+            "text": "실내식물"
+          },
+          {
+            "text": "관엽식물"
+          },
+          {
+            "text": "인테리어식물"
+          },
+          {
+            "text": "무늬식물"
+          },
+          {
+            "text": "드라세나"
+          }
+        ]
+      }
+    },
+    "customerBenefit": {
+      "immediateDiscountPolicy": {
+        "discountMethod": {
+          "value": 20,
+          "unitType": "PERCENT"
+        }
+      }
+    }
+  },
+  "smartstoreChannelProduct": {
+    "naverShoppingRegistration": true,
+    "channelProductDisplayStatusType": "SUSPENSION"
+  }
+}
