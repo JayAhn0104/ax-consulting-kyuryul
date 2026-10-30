@@ -3,26 +3,33 @@
     "name": "",
     "composition": "",
     "cost": 0,
+    "height": "",
+    "pot_diameter": "",
     "notes": ""
   },
   "category": {
     "path": "",
     "code": "",
     "basis": "",
-    "search": {}
+    "candidates": []
   },
   "name": {
     "value": "",
-    "basis": ""
+    "basis": "",
+    "parts": [],
+    "keywords": []
   },
   "detail": {
-    "file": "detail.html"
+    "file": "detail.html",
+    "basis": ""
   },
   "tags": [],
+  "tag_basis": [],
   "attributes": [],
   "seo": {
     "page_title": "",
-    "meta_description": ""
+    "meta_description": "",
+    "basis": ""
   },
   "notice": {
     "item_name": "",

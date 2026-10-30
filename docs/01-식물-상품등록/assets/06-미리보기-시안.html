@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>미리보기 시안</title>
+<style>
+  :root { --ink:#333; --sub:#666; --muted:#999; --line:#e5e5e5; --field:#d5d5d5; --bg:#f1f2f4;
+          --green:#03c75a; --green-text:#00b843; --red:#f53b3b; --orange:#ff7a00; --blue:#1a6fd8;
+          --ai:#2f3e5c; --ai-bg:#f3f5f9; --ai-line:#d9dfea; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-size:13px; line-height:1.55;
+         font-family:"Nanum Gothic","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif; }
+  .topbar { background:#2b3036; color:#fff; height:48px; display:flex; align-items:center; padding:0 24px; font-weight:700; font-size:15px; }
+  .topbar span { color:var(--green); margin-left:4px; }
+  .topbar .stage { margin-left:auto; font-weight:400; font-size:12px; color:#c9c9c9; }
+  .wrap { max-width:1100px; margin:0 auto; padding:16px 20px 60px; }
+  .pagehead { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; padding:14px 4px 12px; }
+  .pagehead h1 { font-size:20px; font-weight:400; margin:0; }
+  .legend { font-size:12px; color:var(--sub); display:flex; gap:14px; align-items:center; }
+  .legend .r { color:var(--red); }
+
+  /* 배지 */
+  .bd { display:inline-block; font-size:11px; line-height:18px; padding:0 6px; white-space:nowrap; vertical-align:middle; }
+  .bd-ai { background:linear-gradient(135deg,#6d5dfc,#3b82f6); color:#fff; font-weight:700; padding:1px 8px 1px 6px; border-radius:3px; }
+  .bd-ai svg { width:11px; height:11px; vertical-align:-1px; margin-right:3px; fill:#fff; }
+  .bd-aiw { border:1px solid #c9c0fb; background:#f6f3ff; color:#5b4be0; line-height:16px; border-radius:3px; }
+  .bd-calc { background:#6b7280; color:#fff; font-weight:700; }
+  .bd-calcw { border:1px solid #d9dbdf; background:#f4f5f6; color:#4b5563; line-height:16px; }
+  .bd-decide { background:var(--orange); color:#fff; font-weight:700; }
+  .bd-ok { border:1px solid var(--green); color:var(--green-text); line-height:16px; }
+  .bd-pick { background:#6d5dfc; color:#fff; font-weight:700; border-radius:3px; }
+  details.calc .bd-pick { background:#6b7280; }
+
+  /* 등록 전 확인 사항 */
+  .todo { background:#fff; border:1px solid var(--line); margin-bottom:10px; }
+  .todo-head { padding:16px 34px; font-size:15px; font-weight:700; border-bottom:1px solid var(--line); }
+  .todo-head em { font-style:normal; color:var(--orange); margin-left:4px; }
+  .todo-row { display:flex; align-items:center; gap:14px; padding:14px 34px; }
+  .todo-row + .todo-row { border-top:1px solid #f0f0f0; }
+  .todo-row .item { width:90px; font-weight:700; flex:none; }
+  .todo-row .desc { flex:1; }
+  .btn { border:1px solid #cfcfcf; background:#fff; padding:6px 12px; font-size:12px; color:#333; text-decoration:none; white-space:nowrap; }
+
+  /* 섹션 */
+  .sec { background:#fff; border:1px solid var(--line); margin-bottom:10px; scroll-margin-top:10px; }
+  .sec-head { display:flex; align-items:center; gap:8px; padding:22px 34px; }
+  .sec-head h2 { font-size:15px; font-weight:700; margin:0; }
+  .dot { display:inline-block; width:5px; height:5px; border-radius:50%; background:var(--red); margin-left:4px; vertical-align:middle; }
+  .sec-head .state { margin-left:auto; color:var(--sub); }
+  .sec-head .toggle { width:34px; height:34px; border:1px solid #cfcfcf; margin-left:auto; position:relative; flex:none; }
+  .sec-head .state + .toggle { margin-left:18px; }
+  .sec-head .toggle::after { content:""; position:absolute; left:12px; top:10px; width:8px; height:8px;
+                             border-right:1.5px solid #555; border-bottom:1.5px solid #555; transform:rotate(45deg); }
+  .sec.open .sec-head .toggle::after { transform:rotate(-135deg); top:15px; }
+  .sec.open .sec-head { border-bottom:1px solid var(--line); }
+  .sec-body { padding:20px 34px 24px; }
+  .row { display:flex; padding:12px 0; }
+  .row + .row { border-top:1px solid #f0f0f0; }
+  .row .label { width:185px; flex:none; padding-top:8px; }
+  .row .field { flex:1; min-width:0; }
+
+  /* 입력칸 모양 */
+  .box { display:flex; align-items:stretch; border:1px solid var(--field); background:#fafafa; height:36px; }
+  .box .v { flex:1; padding:0 12px; display:flex; align-items:center; min-width:0; }
+  .box .unit, .box .count { border-left:1px solid var(--field); padding:0 14px; display:flex; align-items:center; background:#fff; color:var(--sub); }
+  .box .count b { color:var(--green-text); font-weight:400; }
+  .w-200 { width:200px; } .w-90 { width:90px; }
+  .inline { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .hint { color:var(--sub); }
+  .seg { display:inline-flex; }
+  .seg span { border:1px solid #cfcfcf; padding:8px 0; width:115px; text-align:center; color:var(--sub); background:#fff; }
+  .seg span + span { border-left:0; }
+  .seg span.on { background:var(--green); border-color:var(--green); color:#fff; }
+  .selected-cat { color:var(--blue); }
+  .selected-cat b { font-weight:700; }
+
+  /* 결정 필요 */
+  .decide .box { border-color:var(--orange); }
+  .decide-note { margin-top:8px; color:#c25e00; font-size:12px; }
+
+  /* AI 판단 띠 */
+  .sec-foot { border-top:1px solid var(--line); background:#fafbfc; padding:14px 34px 16px; }
+  .sec-foot-title { font-size:12px; color:var(--muted); margin-bottom:8px; }
+  details.ai { border:1px solid #ddd6fe; border-left:3px solid #6d5dfc; background:linear-gradient(90deg,#f6f3ff 0%,#f1f5ff 100%); }
+  details.ai.calc { border:1px solid #e1e3e6; border-left:3px solid #9ca3af; background:#f6f7f8; }
+  details.ai > summary { display:flex; align-items:center; gap:10px; padding:10px 14px; cursor:pointer; list-style:none; }
+  details.ai > summary::-webkit-details-marker { display:none; }
+  details.ai > summary .opinion { flex:1; color:#2b2f45; }
+  details.ai > summary .more { font-size:12px; font-weight:700; white-space:nowrap; color:#5b4be0; background:#fff;
+                               border:1px solid #c9c0fb; padding:5px 12px; border-radius:3px; }
+  details.ai > summary:hover .more { background:#5b4be0; color:#fff; border-color:#5b4be0; }
+  details.ai > summary .more::after { content:"판단 근거 보기 ▾"; }
+  details.ai[open] > summary .more::after { content:"접기 ▴"; }
+  details.ai[open] > summary { border-bottom:1px solid #ddd6fe; }
+  details.ai.calc > summary .more { color:#4b5563; border-color:#d1d5db; }
+  details.ai.calc > summary:hover .more { background:#4b5563; color:#fff; border-color:#4b5563; }
+  details.ai.calc > summary .more::after { content:"계산 과정 보기 ▾"; }
+  details.ai.calc[open] > summary .more::after { content:"접기 ▴"; }
+  details.ai.calc[open] > summary { border-bottom:1px solid #e1e3e6; }
+  .ai-body { background:#fff; padding:14px 16px 16px; }
+  .ai-sub { display:flex; align-items:baseline; gap:8px; font-weight:700; margin:14px 0 6px; }
+  .ai-sub:first-child { margin-top:0; }
+  .ai-sub small { font-weight:400; color:var(--muted); font-size:12px; }
+  table.grid { border-collapse:collapse; width:100%; font-size:12px; }
+  table.grid th { background:#f7f7f7; color:var(--sub); font-weight:400; text-align:left; padding:8px 10px; border:1px solid #e9e9e9; }
+  table.grid td { padding:8px 10px; border:1px solid #e9e9e9; vertical-align:top; }
+  table.grid tr.picked td { background:#f4f1ff; }
+  details.calc table.grid tr.picked td { background:#f3f4f6; }
+  .r-ok { color:#4b5563; } .r-ok::before { content:"✓ "; } .r-warn { color:var(--orange); font-weight:700; }
+  .ai-body a { color:var(--blue); text-decoration:none; }
+
+  @media (max-width: 640px) {
+    .wrap { padding:8px 8px 40px; }
+    .sec-head, .todo-head { padding:16px; } .sec-body { padding:12px 16px 18px; } .sec-foot { padding:12px 16px; }
+    .todo-row { padding:12px 16px; flex-wrap:wrap; }
+    .row { flex-direction:column; } .row .label { width:auto; padding:0 0 6px; }
+    details.ai > summary { flex-wrap:wrap; }
+    .seg span { width:96px; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">상품등록<span>검토</span><div class="stage">비공개 등록 전 · 2026-10-30 11:28 검사</div></div>
+<div class="wrap">
+
+  <div class="pagehead">
+    <h1>송오브인디아 1개 노란무늬 곡선수형</h1>
+    <div class="legend"><span class="r">● 필수항목</span></div>
+  </div>
+
+  <div class="todo">
+    <div class="todo-head">등록 전 확인 사항<em>1건</em></div>
+    <div class="todo-row">
+      <span class="bd bd-decide">결정 필요</span>
+      <span class="item">판매가</span>
+      <span class="desc">정가 32,900원은 임시 가격 규칙으로 계산한 값입니다. 이 가격으로 등록할지 정해 주세요.</span>
+      <a class="btn" href="#price">바로가기</a>
+    </div>
+  </div>
+
+  <!-- 카테고리 -->
+  <section class="sec open">
+    <div class="sec-head"><h2>카테고리<span class="dot"></span></h2><span class="toggle"></span></div>
+    <div class="sec-body">
+      <div class="selected-cat">선택한 카테고리 : <b>생활/건강&gt;원예/식물&gt;공기정화식물</b> <span class="bd bd-ok">확인 완료</span></div>
+    </div>
+    <div class="sec-foot">
+      <details class="ai">
+        <summary><span class="bd bd-ai"><svg viewBox="0 0 16 16"><path d="M8 0l1.9 6.1L16 8l-6.1 1.9L8 16l-1.9-6.1L0 8l6.1-1.9z"/></svg>AI 판단</span><span class="opinion">드라세나류는 공기정화식물로 통용되고, 최근 3개월 클릭 수요도 관엽식물보다 높아 공기정화식물이 적합합니다.</span><span class="more"></span></summary>
+        <div class="ai-body">
+          <div class="ai-sub">근거 데이터 <small>출처: 네이버 쇼핑인사이트 · 2026년 7~9월 카테고리 클릭 수</small></div>
+          <table class="grid">
+            <tr><th style="width:56px"></th><th>후보 카테고리</th><th style="width:150px">클릭 수요 (관엽식물 = 100)</th><th>AI가 본 특징</th></tr>
+            <tr class="picked"><td><span class="bd bd-pick">AI 선택</span></td><td>생활/건강&gt;원예/식물&gt;공기정화식물</td><td><b>164</b></td><td>드라세나류는 공기정화식물로 통용</td></tr>
+            <tr><td></td><td>생활/건강&gt;원예/식물&gt;관엽식물</td><td>100</td><td>잎을 감상하는 실내 관엽식물</td></tr>
+          </table>
+          <div class="ai-sub">자동 검사 결과 <small>AI 판단이 아닌 규칙 검사</small></div>
+          <table class="grid">
+            <tr><th>검사 항목</th><th style="width:80px">결과</th><th>내용</th></tr>
+            <tr><td>카테고리 선택</td><td class="r-ok">통과</td><td>생활/건강&gt;원예/식물&gt;공기정화식물</td></tr>
+          </table>
+          <div class="ai-sub">직접 확인</div>
+          <a href="https://search.shopping.naver.com/search/all?query=%EC%86%A1%EC%98%A4%EB%B8%8C%EC%9D%B8%EB%94%94%EC%95%84" target="_blank">네이버쇼핑에서 '송오브인디아' 검색 결과 보기 ›</a>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 예약구매 -->
+  <section class="sec">
+    <div class="sec-head"><h2>예약구매</h2><span class="state">설정안함</span><span class="toggle"></span></div>
+  </section>
+
+  <!-- 상품명 -->
+  <section class="sec open">
+    <div class="sec-head"><h2>상품명<span class="dot"></span></h2><span class="toggle"></span></div>
+    <div class="sec-body">
+      <div class="row">
+        <div class="label">상품명<span class="dot"></span></div>
+        <div class="field">
+          <div class="box"><div class="v">송오브인디아 1개 노란무늬 곡선수형</div><div class="count"><b>19</b>/100</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-foot">
+      <details class="ai">
+            <summary><span class="bd bd-ai"><svg viewBox="0 0 16 16"><path d="M8 0l1.9 6.1L16 8l-6.1 1.9L8 16l-1.9-6.1L0 8l6.1-1.9z"/></svg>AI 판단</span><span class="opinion">식물명과 구성에, 사진에서 확인한 노란 무늬와 곡선 수형을 특징으로 더했습니다.</span><span class="more"></span></summary>
+            <div class="ai-body">
+              <div class="ai-sub">상품명 구성</div>
+              <table class="grid">
+                <tr><th>단어</th><th>출처</th></tr>
+                <tr><td>송오브인디아</td><td>입력한 식물명</td></tr>
+                <tr><td>1개</td><td>입력한 구성</td></tr>
+                <tr><td>노란무늬, 곡선수형</td><td>사진에서 확인한 특징</td></tr>
+              </table>
+              <div class="ai-sub">근거 데이터 <small>출처: 네이버 쇼핑인사이트 · 공기정화식물 카테고리 내 키워드 클릭 수</small></div>
+              <table class="grid">
+                <tr><th>식물 이름 표기</th><th style="width:150px">클릭 수 (최대 = 100)</th></tr>
+                <tr class="picked"><td>송오브인디아 <span class="bd bd-pick">사용</span></td><td><b>100</b></td></tr>
+                <tr><td>드라세나</td><td>66</td></tr>
+              </table>
+              <div class="ai-sub">자동 검사 결과 <small>AI 판단이 아닌 규칙 검사 · 7개 모두 통과</small></div>
+              <table class="grid">
+                <tr><th>검사 항목</th><th style="width:80px">결과</th><th>내용</th></tr>
+                <tr><td>글자수</td><td class="r-ok">통과</td><td>19자 (최대 100자, 권장 50자 이내)</td></tr>
+                <tr><td>금지 문자</td><td class="r-ok">통과</td><td></td></tr>
+                <tr><td>혜택·홍보 문구 기재 금지</td><td class="r-ok">통과</td><td></td></tr>
+                <tr><td>주관적 수식어 지양</td><td class="r-ok">통과</td><td></td></tr>
+                <tr><td>쇼핑몰명 기재 금지</td><td class="r-ok">통과</td><td></td></tr>
+                <tr><td>'1+1' 등 묶음 표기 확인</td><td class="r-ok">통과</td><td></td></tr>
+                <tr><td>동일 단어 반복 금지</td><td class="r-ok">통과</td><td></td></tr>
+              </table>
+            </div>
+          </details>
+    </div>
+  </section>
+
+  <!-- 판매가 -->
+  <section class="sec open" id="price">
+    <div class="sec-head"><h2>판매가<span class="dot"></span></h2><span class="toggle"></span></div>
+    <div class="sec-body">
+      <div class="row decide">
+        <div class="label">판매가<span class="dot"></span></div>
+        <div class="field">
+          <div class="inline"><div class="box w-200"><div class="v">32,900</div><div class="unit">원</div></div><span class="hint">삼만이천구백 원</span></div>
+          <div class="decide-note"><span class="bd bd-decide">결정 필요</span> 임시 가격 규칙으로 계산한 값입니다. 이 가격으로 등록할지 정해 주세요.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label">즉시할인</div>
+        <div class="field">
+          <div class="seg"><span class="on">설정함</span><span>설정안함</span></div>
+          <div class="inline" style="margin-top:10px"><span>기본할인</span><div class="box w-90"><div class="v">20</div><div class="unit">%</div></div><span>할인</span></div>
+          <div style="margin-top:8px">할인가 <b>26,320원</b> <span class="hint">(6,580원 할인)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-foot">
+      <details class="ai" open>
+            <summary><span class="bd bd-ai"><svg viewBox="0 0 16 16"><path d="M8 0l1.9 6.1L16 8l-6.1 1.9L8 16l-1.9-6.1L0 8l6.1-1.9z"/></svg>AI 판단</span><span class="opinion">정가가 입력되지 않아 임시 규칙(매입가 × 2.74)으로 계산했습니다. 실제 가격 기준이 있으면 알려 주세요.</span><span class="more"></span></summary>
+            <div class="ai-body">
+              <div class="ai-sub">계산 과정 <small>정해진 규칙으로 계산</small></div>
+              <table class="grid">
+                <tr><th>단계</th><th>값</th></tr>
+                <tr><td>매입가</td><td>12,000원</td></tr>
+                <tr><td>임시 규칙 적용 (× 2.74)</td><td>32,880원</td></tr>
+                <tr><td>100원 단위 반올림 → 정가</td><td><b>32,900원</b></td></tr>
+                <tr><td>기본할인 20% 적용 → 할인가</td><td>26,320원 (매입가의 2.19배)</td></tr>
+              </table>
+              <div class="ai-sub">자동 검사 결과 <small>AI 판단이 아닌 규칙 검사 · 3개 중 1개 확인 필요</small></div>
+              <table class="grid">
+                <tr><th>검사 항목</th><th style="width:80px">결과</th><th>내용</th></tr>
+                <tr><td>가격 규칙</td><td class="r-warn">확인 필요</td><td>임시 규칙으로 계산된 정가</td></tr>
+                <tr><td>판매가 범위·단위</td><td class="r-ok">통과</td><td>32,900원 (10원 단위)</td></tr>
+                <tr><td>할인율 범위 (1~99%)</td><td class="r-ok">통과</td><td>20%</td></tr>
+              </table>
+            </div>
+          </details>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
