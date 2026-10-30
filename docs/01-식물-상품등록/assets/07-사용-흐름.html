@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>상품 등록 사용 흐름</title>
+<style>
+  :root {
+    --ink: #1F2328; --sub: #6B7280; --line: #9CA3AF;
+    --band-c: #F5F6F8; --band-a: #F3F7F4; --band-n: #EEF2FF;
+    --node: #FFFFFF; --node-stroke: #D1D5DB;
+    --acc: #2F7D4F; --ch: #3B5BDB; --ch-stroke: #A5B4FC; --review: #F5B47A; --say: #3B5BDB;
+  }
+  body { margin: 0; background: #fff; font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; color: var(--ink); }
+  .wrap { width: 1240px; padding: 24px 20px 8px; box-sizing: border-box; }
+  h1 { font-size: 20px; margin: 0 0 2px 0; }
+  p { font-size: 13px; color: var(--sub); margin: 0 0 12px 0; }
+  .prep { display: flex; align-items: center; gap: 10px; background: var(--band-c); border-radius: 12px;
+          padding: 10px 20px; font-size: 13px; margin-bottom: 4px; width: 1190px; box-sizing: border-box; }
+  .prep b { margin-right: 8px; }
+  .prep .s { background: #fff; border: 1px solid var(--node-stroke); border-radius: 6px; padding: 3px 10px; }
+  .prep .a { color: var(--line); }
+  .prep .r { margin-left: auto; color: var(--sub); }
+  svg text { font-family: inherit; }
+  .t  { font-size: 15px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+  .s  { font-size: 12px; fill: var(--sub); text-anchor: middle; }
+  .li { font-size: 13px; fill: var(--ink); }
+  .ln { font-size: 12px; font-weight: 700; fill: var(--acc); }
+  .lane { font-size: 14px; font-weight: 700; fill: var(--ink); }
+  .lane-s { font-size: 11px; fill: var(--sub); }
+  .ph { font-size: 12px; font-weight: 700; fill: var(--sub); text-anchor: middle; letter-spacing: 1px; }
+  .ar { font-size: 11px; fill: var(--sub); }
+  .say { font-size: 12px; font-weight: 700; fill: var(--say); }
+  .node { fill: var(--node); stroke: var(--node-stroke); stroke-width: 1.2; }
+  .rv { fill: var(--node); stroke: var(--review); stroke-width: 1.6; }
+  .tag { font-size: 11px; font-weight: 700; fill: #C25E00; text-anchor: middle; }
+  .nv { fill: #fff; stroke: var(--ch-stroke); stroke-width: 1.2; }
+  .flow { stroke: var(--line); stroke-width: 1.6; fill: none; }
+  .dash { stroke-dasharray: 5 4; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>상품 등록 사용 흐름</h1>
+  <p>사용자는 Codex 앱 채팅으로 말하고, 결과 화면은 Codex 창 안에서 확인함. 파란 글씨는 채팅에 입력하는 말의 예</p>
+
+  <div class="prep">
+    <b>처음 한 번</b>
+    <span class="s">ChatGPT 앱 실행</span><span class="a">→</span>
+    <span class="s">Codex로 전환</span><span class="a">→</span>
+    <span class="s">프로젝트로 plant-agent 폴더 선택</span>
+    <span class="r">이후에는 같은 프로젝트에서 상품마다 새 대화 시작</span>
+  </div>
+
+  <svg width="1200" height="660" viewBox="0 20 1200 660" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/>
+      </marker>
+    </defs>
+
+    <!-- 단계 -->
+    <text class="ph" x="300" y="44">작성</text>
+    <text class="ph" x="640" y="44">검토 (등록 전)</text>
+    <text class="ph" x="860" y="44">등록 (비공개)</text>
+    <text class="ph" x="1080" y="44">확인 · 공개</text>
+    <line x1="510" y1="34" x2="510" y2="670" stroke="#E5E7EB" stroke-dasharray="3 4"/>
+    <line x1="750" y1="34" x2="750" y2="670" stroke="#E5E7EB" stroke-dasharray="3 4"/>
+    <line x1="970" y1="34" x2="970" y2="670" stroke="#E5E7EB" stroke-dasharray="3 4"/>
+
+    <!-- 레인 -->
+    <rect x="0" y="60"  width="1190" height="140" rx="12" fill="var(--band-c)"/>
+    <rect x="0" y="215" width="1190" height="280" rx="12" fill="var(--band-a)"/>
+    <rect x="0" y="510" width="1190" height="150" rx="12" fill="var(--band-n)"/>
+    <text class="lane" x="20" y="130">사용자</text><text class="lane-s" x="20" y="148">채팅 · 화면 확인</text>
+    <text class="lane" x="20" y="355">Codex (AI)</text><text class="lane-s" x="20" y="373">작성 · 화면 열기</text>
+    <text class="lane" x="20" y="585" style="fill:var(--ch)">네이버</text>
+
+    <!-- 사용자 -->
+    <rect class="node" x="140" y="95" width="160" height="70" rx="10"/>
+    <text class="t" x="220" y="124">사진 + 정보 입력</text><text class="s" x="220" y="145">상품명 · 도매가 · 높이 · 화분</text>
+
+    <rect class="rv" x="560" y="95" width="160" height="70" rx="10"/>
+    <text class="tag" x="640" y="88">검토 1</text>
+    <text class="t" x="640" y="124">미리보기 확인</text><text class="s" x="640" y="145">등록될 내용 · AI 판단 근거</text>
+
+    <rect class="rv" x="1000" y="95" width="160" height="70" rx="10"/>
+    <text class="tag" x="1080" y="88">검토 2</text>
+    <text class="t" x="1080" y="124">판매자센터 확인</text><text class="s" x="1080" y="145">실제 등록 상태 · 고객 화면</text>
+
+    <!-- Codex: 작성 -->
+    <rect class="node" x="140" y="245" width="330" height="230" rx="10" style="stroke:var(--acc);stroke-width:1.6"/>
+    <text class="t" x="305" y="272">등록 정보 작성</text>
+    <g transform="translate(160,302)">
+      <text class="li" y="0"><tspan class="ln">1 </tspan>사진 선택 · 보정</text>
+      <text class="li" y="26"><tspan class="ln">2 </tspan>카테고리</text>
+      <text class="li" y="52"><tspan class="ln">3 </tspan>상품명</text>
+      <text class="li" y="78"><tspan class="ln">4 </tspan>판매가 계산</text>
+      <text class="li" x="160" y="0"><tspan class="ln">5 </tspan>상세설명 · 상세 이미지</text>
+      <text class="li" x="160" y="26"><tspan class="ln">6 </tspan>태그 · 검색설정</text>
+      <text class="li" x="160" y="52"><tspan class="ln">7 </tspan>기본 설정값 적용</text>
+      <text class="li" x="160" y="78"><tspan class="ln">8 </tspan>규칙 검사</text>
+    </g>
+    <line x1="160" y1="410" x2="450" y2="410" stroke="#E5E7EB"/>
+    <text class="s" x="305" y="436">작성 기준 페이지의 기준을 따름</text>
+    <text class="s" x="305" y="456">빠진 정보는 모아서 질문</text>
+
+    <!-- Codex: 화면 / 등록 / 공개 -->
+    <rect class="node" x="560" y="325" width="160" height="70" rx="10"/>
+    <text class="t" x="640" y="354">미리보기 열기</text><text class="s" x="640" y="375">Codex 창 안에 표시</text>
+
+    <rect class="node" x="780" y="325" width="160" height="70" rx="10"/>
+    <text class="t" x="860" y="354">비공개 등록</text><text class="s" x="860" y="375">등록 후 내용 대조</text>
+
+    <rect class="node" x="1000" y="325" width="160" height="70" rx="10"/>
+    <text class="t" x="1080" y="354">판매 공개</text><text class="s" x="1080" y="375">전시중지 → 전시중</text>
+
+    <!-- 네이버 -->
+    <rect class="nv" x="300" y="555" width="160" height="64" rx="10"/>
+    <text class="t" x="380" y="582" style="fill:var(--ch)">쇼핑인사이트</text><text class="s" x="380" y="602">카테고리 수요 · 키워드</text>
+
+    <rect class="nv" x="780" y="555" width="160" height="64" rx="10"/>
+    <text class="t" x="860" y="582" style="fill:var(--ch)">스마트스토어</text><text class="s" x="860" y="602">비공개 상태로 등록</text>
+
+    <rect class="nv" x="1000" y="555" width="160" height="64" rx="10"/>
+    <text class="t" x="1080" y="582" style="fill:var(--ch)">판매 시작</text><text class="s" x="1080" y="602">고객에게 노출</text>
+
+    <!-- 화살표 -->
+    <path class="flow" d="M220,165 V243" marker-end="url(#arw)"/>
+    <text class="say" x="228" y="210">“상품 등록해줘”</text>
+
+    <path class="flow" d="M470,360 H558" marker-end="url(#arw)"/>
+
+    <path class="flow" d="M640,325 V167" marker-end="url(#arw)"/>
+    <text class="say" x="648" y="240">“미리보기 열어줘”</text>
+    <text class="say" x="648" y="258">“작성 기준 열어줘”</text>
+
+    <path class="flow dash" d="M560,115 H420 V243" marker-end="url(#arw)"/>
+    <text class="ar" x="430" y="90">수정 요청</text>
+    <text class="say" x="430" y="107">“상품명 더 짧게”</text>
+
+    <path class="flow" d="M720,130 H860 V323" marker-end="url(#arw)"/>
+    <text class="say" x="732" y="122">“이대로 등록해줘”</text>
+
+    <path class="flow" d="M860,395 V553" marker-end="url(#arw)"/>
+    <text class="ar" x="868" y="530">등록</text>
+
+    <path class="flow" d="M940,345 H980 V130 H998" marker-end="url(#arw)"/>
+    <text class="say" x="972" y="250" text-anchor="end">“등록한 상품</text>
+    <text class="say" x="972" y="268" text-anchor="end">화면 열어줘”</text>
+
+    <path class="flow" d="M1080,165 V323" marker-end="url(#arw)"/>
+    <text class="say" x="1088" y="250">“공개해줘”</text>
+
+    <path class="flow" d="M1080,395 V553" marker-end="url(#arw)"/>
+
+    <path class="flow dash" d="M380,475 V553" marker-start="url(#arw)" marker-end="url(#arw)"/>
+    <text class="ar" x="388" y="520">카테고리 · 상품명 참고</text>
+  </svg>
+</div>
+</body>
+</html>

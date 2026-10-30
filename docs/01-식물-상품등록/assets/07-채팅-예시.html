@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Codex 앱 사용 예시</title>
+<style>
+  :root {
+    --ink: #1F2328; --sub: #6B7280; --line: #E5E7EB; --stroke: #D1D5DB;
+    --user: #F1F3F5; --acc: #2F7D4F; --ch: #3B5BDB; --ai: #5b4be0; --orange: #C25E00;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: var(--ink); word-break: keep-all;
+         font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; }
+  .wrap { width: 1240px; padding: 24px 20px 24px; }
+  h1 { font-size: 20px; margin: 0 0 2px; }
+  .lead { font-size: 13px; color: var(--sub); margin: 0 0 16px; }
+  .stage { position: relative; display: flex; gap: 30px; align-items: flex-start; }
+
+  /* 앱 창 */
+  .app { width: 830px; border: 1px solid var(--stroke); border-radius: 12px; overflow: hidden;
+         box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+  .bar { height: 40px; background: #F7F7F8; border-bottom: 1px solid var(--line); display: flex; align-items: center; padding: 0 14px; gap: 14px; font-size: 13px; }
+  .dots { display: flex; gap: 6px; } .dots i { width: 11px; height: 11px; border-radius: 50%; background: #D9DADC; display: block; }
+  .bar .appname { font-weight: 700; }
+  .mode { display: inline-flex; background: #E9EAEC; border-radius: 8px; padding: 2px; font-size: 12px; }
+  .mode span { padding: 3px 12px; border-radius: 6px; color: var(--sub); }
+  .mode span.on { background: #fff; color: var(--ink); font-weight: 700; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+  .body { display: flex; }
+  .side { width: 190px; background: #FAFAFA; border-right: 1px solid var(--line); padding: 14px 12px; font-size: 12.5px; }
+  .side h4 { margin: 0 0 6px; font-size: 11px; color: var(--sub); font-weight: 700; letter-spacing: .5px; }
+  .proj { border: 1.5px solid var(--acc); background: #F3F7F4; border-radius: 8px; padding: 8px 10px; margin-bottom: 16px; }
+  .proj .nm { font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  .proj .ok { font-size: 11px; color: var(--acc); margin: 2px 0 6px; }
+  .proj ul { list-style: none; margin: 0; padding: 0; color: #4B5563; }
+  .proj li { padding: 2px 0 2px 14px; position: relative; }
+  .proj li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 5px; height: 5px; border-radius: 1px; background: #C4C8CE; }
+  .codex { font-size: 16px; font-weight: 700; margin: 2px 0 8px; } .codex span { font-size: 11px; color: var(--sub); }
+  .thread { padding: 6px 8px; border-radius: 6px; color: #4B5563; }
+  .thread.on { background: #EDEEF0; color: var(--ink); font-weight: 700; }
+  svg.ic { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+
+  .chat { flex: 1; padding: 18px 22px 0 46px; font-size: 13.5px; line-height: 1.55; }
+  .grp { position: relative; padding-bottom: 6px; }
+  .msg { margin-bottom: 12px; }
+  .u { display: flex; flex-direction: column; align-items: flex-end; }
+  .u .b { background: var(--user); border-radius: 14px 14px 4px 14px; padding: 9px 13px; max-width: 470px; }
+  .photos { display: flex; gap: 5px; margin-bottom: 6px; }
+  .photos img { width: 58px; height: 58px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+  .a .who { font-size: 12px; font-weight: 700; color: var(--sub); margin-bottom: 3px; }
+  .a p { margin: 0 0 6px; }
+  .sum { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 12.5px; margin: 4px 0 8px; }
+  .sum div { display: flex; padding: 5px 10px; border-top: 1px solid #F1F2F4; }
+  .sum div:first-child { border-top: 0; }
+  .sum b { width: 76px; flex: none; color: var(--sub); font-weight: 400; }
+  .sum .warn { background: #FFF8F0; color: var(--orange); }
+  .shot { border: 1px solid var(--stroke); border-radius: 8px; overflow: hidden; width: 420px; margin: 4px 0 6px; }
+  .shot .cap { font-size: 11px; color: var(--sub); background: #F7F7F8; border-bottom: 1px solid var(--line); padding: 4px 10px; display: flex; gap: 6px; align-items: center; }
+  .shot img { display: block; width: 100%; height: 190px; object-fit: cover; object-position: top; }
+  .chip { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 7px; margin-right: 4px; vertical-align: 1px; }
+  .chip.naver { background: #E8F8EF; color: #0A7F3F; }
+  .chip.api { background: #EEF2FF; color: var(--ch); }
+  .input { margin: 8px -22px 0 -46px; border-top: 1px solid var(--line); padding: 12px 22px 16px; }
+  .input .box { border: 1px solid var(--stroke); border-radius: 12px; padding: 10px 12px; color: #9CA3AF; display: flex; gap: 8px; align-items: center; font-size: 13px; }
+
+  /* 설명 */
+  .notes { position: relative; width: 340px; }
+  .note { position: absolute; left: 0; width: 340px; }
+  .note .hd { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .note .no { width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 13px;
+              display: inline-flex; align-items: center; justify-content: center; flex: none; }
+  .note.prep .no { background: var(--acc); }
+  .note p { margin: 0; font-size: 13px; line-height: 1.6; color: #374151; }
+  .note p + p { margin-top: 4px; }
+  .note .q { color: var(--ch); font-weight: 700; }
+  .mark { position: absolute; left: -34px; top: 2px; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff;
+          font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .grp::before { content: ""; position: absolute; left: -24px; top: 28px; bottom: 16px; border-left: 2px solid #E5E7EB; }
+  .proj { position: relative; }
+  .proj .mark { left: auto; right: -11px; top: -11px; background: var(--acc); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Codex 앱에서는 이렇게 씁니다</h1>
+  <p class="lead">ChatGPT 앱의 Codex 채팅창 하나로 작성 · 검토 · 네이버 등록 · 기준 수정까지 진행. 실제 시연(송오브인디아)을 단순화한 화면 예시</p>
+
+  <div class="stage">
+    <div class="app">
+      <div class="bar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <span class="appname">ChatGPT</span>
+        <span style="color:var(--sub);margin-left:110px">송오브인디아 상품 등록하기</span>
+      </div>
+      <div class="body">
+        <div class="side" id="side">
+          <div class="codex">Codex <span>▾</span></div>
+          <div class="thread">새 채팅</div>
+          <h4 style="margin-top:14px">프로젝트</h4>
+          <div class="proj"><span class="mark">0</span>
+            <div class="nm"><svg class="ic" viewBox="0 0 16 16"><path d="M1.5 4.5v8h13v-6.5H7.5L6 4.5z"/></svg>plant-agent</div>
+            <div class="ok">● 폴더 연결됨</div>
+            <div class="thread on">송오브인디아 상품 등록하기</div>
+            <div class="thread">무늬아이비 상품 등록하기</div>
+          </div>
+        </div>
+
+        <div class="chat">
+          <div class="grp" id="g1"><span class="mark">1</span>
+            <div class="msg u"><div class="b">
+              <div class="photos">
+                <img src="../../../plant-agent/products/2026-10-30_송오브인디아/images/rep.jpg">
+                <img src="../../../plant-agent/products/2026-10-30_송오브인디아/images/add-1.jpg">
+                <img src="../../../plant-agent/products/2026-10-30_송오브인디아/images/add-2.jpg">
+                <img src="../../../plant-agent/products/2026-10-30_송오브인디아/images/add-4.jpg">
+              </div>
+              송오브인디아 1개, 도매가 12,000원, 높이 50~55cm, 화분 15cm. 상품 등록해줘
+            </div></div>
+            <div class="msg a">
+              <div class="who">Codex</div>
+              <p>등록 정보를 작성했습니다.</p>
+              <div class="sum">
+                <div><b>카테고리</b>공기정화식물</div>
+                <div><b>상품명</b>송오브인디아 1개 공기정화식물 노란무늬 외목대</div>
+                <div><b>판매가</b>32,900원 → 할인가 26,320원 (기본할인 20%)</div>
+                <div><b>사진</b>대표 · 추가 이미지 선택, 상세 이미지 3장 생성</div>
+                <div class="warn"><b>확인 필요</b>정가가 임시 가격 규칙으로 계산되었습니다</div>
+              </div>
+              <p>미리보기를 이 창에 열었습니다.</p>
+              <div class="shot"><div class="cap">미리보기 · Codex 창</div><img src="07-화면-미리보기.png"></div>
+            </div>
+          </div>
+
+          <div class="grp" id="g2"><span class="mark">2</span>
+            <div class="msg u"><div class="b">이대로 등록해줘</div></div>
+            <div class="msg a">
+              <div class="who">Codex</div>
+              <p><span class="chip api">네이버 커머스 API</span>스마트스토어에 <b>비공개</b>로 등록했습니다. 상품번호 13778644157, 등록 내용 대조 결과 일치합니다.</p>
+              <p>판매자센터 상품 화면을 열었습니다. 확인 후 '공개해줘'라고 말씀해 주세요.</p>
+            </div>
+          </div>
+
+          <div class="grp" id="g3"><span class="mark">3</span>
+            <div class="msg u"><div class="b">작성 기준 보여줘</div></div>
+            <div class="msg a">
+              <div class="who">Codex</div>
+              <p>작성 기준 페이지를 열었습니다. 바꾸고 싶은 기준을 말씀해 주세요.</p>
+              <div class="shot"><div class="cap">작성 기준 · Codex 창</div><img src="07-화면-작성기준.png" style="object-position:0 30%"></div>
+            </div>
+            <div class="msg u"><div class="b">앞으로 기본할인은 15%로 해줘</div></div>
+            <div class="msg a">
+              <div class="who">Codex</div>
+              <p>기본할인을 20% → 15%로 바꿨습니다. 다음 상품부터 적용되며, 작성 기준의 변경 이력에 남겼습니다.</p>
+            </div>
+          </div>
+
+          <div class="input"><div class="box">
+            <svg class="ic" viewBox="0 0 16 16"><path d="M10.5 4.5 5.2 9.8a1.5 1.5 0 0 0 2.1 2.1l5.6-5.6a3 3 0 0 0-4.2-4.2L3 7.8a4.5 4.5 0 0 0 6.4 6.4l4.1-4.1"/></svg>
+            사진을 첨부하고 상품 정보를 입력하세요
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes" id="notes">
+      <div class="note prep" data-for="side">
+        <div class="hd"><span class="no">0</span>VS Code 없이 앱에서 바로</div>
+        <p>ChatGPT 앱에서 Codex를 선택하고 <b>plant-agent 폴더</b>를 프로젝트로 연결하면 준비 끝. 상품마다 프로젝트 아래에 새 채팅.</p>
+        <p>폴더 안의 작업 지침 · 작성 기준 · 등록 도구를 AI가 읽고 그대로 일함.</p>
+      </div>
+      <div class="note" data-for="g1">
+        <div class="hd"><span class="no">1</span>정보 작성 + 미리보기 검토</div>
+        <p>사진과 상품 정보만 주면 카테고리 · 상품명 · 가격 · 상세설명 · 태그를 작성하고, 사진을 고르고 필요하면 보정.</p>
+        <p>결과는 판매자센터와 같은 모양의 <b>미리보기</b>로 확인. 고칠 점은 채팅으로 말하면 됨.</p>
+      </div>
+      <div class="note" data-for="g2">
+        <div class="hd"><span class="no">2</span>네이버에 실제 등록</div>
+        <p><span class="q">"이대로 등록해줘"</span> 한마디로 네이버 커머스 API를 통해 스마트스토어에 등록.</p>
+        <p>먼저 비공개로 올리고 판매자센터에서 확인한 뒤 <span class="q">"공개해줘"</span>로 판매 시작.</p>
+      </div>
+      <div class="note" data-for="g3">
+        <div class="hd"><span class="no">3</span>작성 기준 확인 · 수정</div>
+        <p>AI가 어떤 기준으로 작성하는지 화면으로 확인.</p>
+        <p>바꾸고 싶은 기준은 말로 요청하면 기준이 바뀌고 다음 상품부터 반영.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // 설명을 해당 대화 구간 높이에 맞춤
+  const notes = document.getElementById('notes');
+  const base = notes.getBoundingClientRect().top;
+  let minTop = 0;
+  document.querySelectorAll('.note').forEach(n => {
+    const target = document.getElementById(n.dataset.for);
+    const top = Math.max(target.getBoundingClientRect().top - base + (n.dataset.for === 'side' ? 40 : 0), minTop);
+    n.style.top = top + 'px';
+    minTop = top + n.offsetHeight + 16;
+  });
+  notes.style.height = minTop + 'px';
+</script>
+</body>
+</html>
