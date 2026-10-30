@@ -35,3 +35,9 @@ words = ["1+1", "2+1"]
 severity = "error"
 description = "동일 단어 반복 금지"
 max_occurrences = 1
+
+# 네이버가 등록을 거절한 태그. 거절 사례가 생길 때마다 추가.
+[tags]
+forbidden = [
+    "관엽식물",   # 2026-10-29 커머스API 등록 시 거절 (태그 사용 불가)
+]

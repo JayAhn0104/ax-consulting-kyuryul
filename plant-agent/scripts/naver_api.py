@@ -6,6 +6,8 @@
 사용:
   uv run scripts/naver_api.py token                       # 인증 확인
   uv run scripts/naver_api.py categories [--find 관엽]     # 카테고리 코드표 다운로드·검색
+  uv run scripts/naver_api.py addressbooks                # 출고지·반품지 주소록 ID 조회
+  uv run scripts/naver_api.py origin --find 국산           # 원산지 코드 조회
   uv run scripts/naver_api.py payload  <상품폴더>          # 등록 요청 내용 생성만 (전송 안 함)
   uv run scripts/naver_api.py register <상품폴더>          # 비공개 상태로 등록
   uv run scripts/naver_api.py verify   <상품폴더>          # 등록 내용 재조회·비교
@@ -77,6 +79,19 @@ def categories(token, find=None):
                 print(c["id"], c["wholeCategoryName"])
     else:
         print(f"카테고리 {len(data)}개 저장: {path}")
+
+
+def addressbooks(token):
+    """판매자 주소록의 ID·이름·유형만 출력 (주소·전화번호는 출력하지 않음)."""
+    data = call("GET", "/v1/seller/addressbooks-for-page?page=1&size=50", token)
+    for a in data.get("addressBooks", []):
+        print(a["addressBookNo"], a["addressType"], a["name"])
+
+
+def origin_codes(token, find):
+    data = call("GET", "/v1/product-origin-areas/query", token, params={"name": find})
+    for o in data.get("originAreaCodeNames", []):
+        print(o["code"], o["name"])
 
 
 # ---------- 등록 요청 생성 ----------
@@ -194,7 +209,7 @@ def require_ready(data, stage):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("command", choices=["token", "categories", "payload", "register", "verify", "publish"])
+    ap.add_argument("command", choices=["token", "categories", "addressbooks", "origin", "payload", "register", "verify", "publish"])
     ap.add_argument("product", nargs="?")
     ap.add_argument("--find")
     args = ap.parse_args()
@@ -205,6 +220,12 @@ def main():
         return
     if args.command == "categories":
         categories(get_token(), args.find)
+        return
+    if args.command == "addressbooks":
+        addressbooks(get_token())
+        return
+    if args.command == "origin":
+        origin_codes(get_token(), args.find or "국산")
         return
 
     pdir = product_dir(args.product)

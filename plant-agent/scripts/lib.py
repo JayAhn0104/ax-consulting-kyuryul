@@ -19,7 +19,13 @@ def load_toml(path: Path) -> dict:
 
 
 def store_config() -> dict:
-    return load_toml(CONFIG / "store.toml")
+    """store.toml(공유 양식)에 store.local.toml(실제 스토어 값, 깃 제외)을 덮어쓴 설정."""
+    cfg = load_toml(CONFIG / "store.toml")
+    local = CONFIG / "store.local.toml"
+    if local.exists():
+        for section, values in load_toml(local).items():
+            cfg.setdefault(section, {}).update(values)
+    return cfg
 
 
 def naming_rules() -> dict:

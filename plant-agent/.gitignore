@@ -3,3 +3,5 @@ config/codes/*.json
 __pycache__/
 .DS_Store
 .venv/
+config/store.local.toml
+작성기준.html

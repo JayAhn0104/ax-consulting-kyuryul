@@ -4,3 +4,5 @@ __pycache__/
 _detail_render.html
 _detail_full.png
 스크린샷*.png
+secrets.env
+data/01-식물-상품등록/판매자센터_화면/
