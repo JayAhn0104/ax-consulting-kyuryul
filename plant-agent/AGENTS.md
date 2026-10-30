@@ -19,10 +19,23 @@
 | "사진함에 넣었어, 무늬아이비 등록해줘" | 위와 같음 |
 | "상품명 더 짧게", "카테고리 바꿔줘" | 해당 항목만 수정 → 검증 → 미리보기 재생성 |
 | "이대로 등록해줘", "공개해줘" | [네이버 등록·판매 공개](.claude/skills/publish-naver/SKILL.md) |
+| "작성 기준 보여줘" | `render_criteria.py --open`으로 작성 기준 페이지를 연다 |
+| "상품명에 '실내' 항상 넣어줘", "기본할인 15%로 해줘" (앞으로 모든 상품에 적용할 기준 변경) | 아래 '작성 기준 변경' |
 
 절차 파일을 먼저 읽고 순서대로 따른다.
 
 네이버 API 설정 전에는 직접 등록 방식으로 안내한다: 사용자가 미리보기의 [복사] 버튼으로 각 항목을 판매자센터에 붙여넣고, 상세설명은 상세 이미지를 올린다.
+
+## 작성 기준 변경
+
+작성 기준은 `작성기준.md` 한 곳에 있다. 사용자가 기준 변경을 요청하면:
+
+1. 바꿀 내용을 한 줄로 확인한다 ("앞으로 모든 상품에 ○○로 적용할까요?"). 이번 상품만 바꾸는 요청이면 기준이 아니라 해당 상품만 수정한다.
+2. 문장으로 된 기준은 `작성기준.md`의 해당 섹션을 고친다. `{{설정 이름}}`으로 표시된 값(할인율, 재고, 배송비 등)은 config 파일의 해당 값 한 줄만 고친다 (`store.local.toml`에 같은 항목이 있으면 그 파일).
+3. `작성기준.md` 맨 아래 '변경 이력'에 `- YYYY-MM-DD · 섹션 · 바꾼 내용`을 맨 위에 추가한다.
+4. `uv run scripts/render_criteria.py --open`으로 페이지를 다시 만들어 보여준다.
+
+`[네이버 규칙]` 표시 기준, 주소록 ID, API 키는 바꾸지 않는다. 요청이 오면 이유를 설명한다.
 
 ## 사진 받기
 
@@ -34,6 +47,7 @@
 
 ```
 사진함/        사용자가 새 상품 사진을 넣는 곳
+작성기준.md    AI 작성 기준 (작성기준.html은 이 파일로 만든 사용자용 페이지)
 config/       스토어 설정값·상품명 규칙·API 키 (컨설턴트 관리)
 scripts/      규칙 검사·계산·변환·API 호출 스크립트
 templates/    새 상품 입력 양식
@@ -53,7 +67,7 @@ products/     상품별 폴더 (YYYY-MM-DD_상품명)
 2. **규칙 검사와 계산은 스크립트로 한다.** 글자수, 금지어, 가격, 이미지 규격 등을 직접 세거나 계산해서 판단하지 않는다.
 3. **사실을 지어내지 않는다.** 원산지, 크기, 화분 규격, 구성 수량 등은 사용자가 준 정보나 config에만 근거한다. 사진에서 보이는 모습(줄기 모양 등)은 사진과 일치하게 쓴다. 모르면 묻는다.
 4. **네이버 등록과 판매 공개는 사용자가 명시적으로 승인한 뒤에만 한다.** 등록은 항상 비공개 상태로 먼저 한다.
-5. **config/, scripts/, templates/는 수정하지 않는다.** 스크립트 오류가 나면 고치지 말고 사용자에게 "컨설턴트에게 전달해 주세요"라고 안내하고 log.md에 기록한다. `config/secrets.env`의 내용은 절대 출력하지 않는다.
+5. **scripts/, templates/는 수정하지 않는다.** config/는 '작성 기준 변경' 절차로 요청받은 값만 고친다. 스크립트 오류가 나면 고치지 말고 사용자에게 "컨설턴트에게 전달해 주세요"라고 안내하고 log.md에 기록한다. `config/secrets.env`의 내용은 절대 출력하지 않는다.
 6. **판단 근거를 남긴다.** 이미지 선택·카테고리·상품명 등은 product.json의 `basis`와 log.md에 이유를 기록한다.
 
 ## 스크립트 실행
@@ -63,11 +77,13 @@ products/     상품별 폴더 (YYYY-MM-DD_상품명)
 ```
 uv run scripts/new_product.py "<상품명>" [--photos <경로> ...]
 uv run scripts/prepare_images.py products/<상품> --rep "<파일명>" --order "<파일명>,..." --basis "<근거>"
-uv run scripts/search_category.py "<검색어>"
+uv run scripts/category_history.py
+uv run scripts/shopping_insight.py categories <코드> ... | keywords --category <코드> <키워드> ...
 uv run scripts/price.py products/<상품>
 uv run scripts/export_detail.py products/<상품>
 uv run scripts/validate.py products/<상품>
 uv run scripts/render_preview.py products/<상품> --open
+uv run scripts/render_criteria.py [--open]
 uv run scripts/naver_api.py <명령> products/<상품>
 ```
 
