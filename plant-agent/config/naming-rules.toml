@@ -40,4 +40,5 @@ max_occurrences = 1
 [tags]
 forbidden = [
     "관엽식물",   # 2026-10-29 커머스API 등록 시 거절 (태그 사용 불가)
+    "플랜테리어", # 2026-10-30 커머스API 등록 시 거절 (Restricted.sellerTags)
 ]
