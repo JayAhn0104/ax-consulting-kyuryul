@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>상품 등록 한 화면 시안</title>
+<style>
+  :root { --ink:#333; --sub:#666; --muted:#999; --line:#e5e5e5; --field:#d5d5d5; --bg:#f1f2f4;
+          --green:#03c75a; --green-text:#00a03a; --red:#f53b3b; --orange:#ff7a00; --blue:#1a6fd8; --ai:#5b4be0; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-size:13px; line-height:1.55; word-break:keep-all; width:1440px;
+         font-family:"Apple SD Gothic Neo","Nanum Gothic","Malgun Gothic","Noto Sans KR",sans-serif; }
+  .topbar { background:#2b3036; color:#fff; height:48px; display:flex; align-items:center; padding:0 22px; gap:28px; }
+  .topbar .logo { font-weight:700; font-size:15px; } .topbar .logo span { color:var(--green); }
+  .topbar .menu { display:flex; gap:22px; color:#c9c9c9; } .topbar .menu .on { color:#fff; font-weight:700; }
+  .topbar .conn { margin-left:auto; font-size:12px; color:#c9c9c9; display:flex; gap:14px; }
+  .topbar .conn i { display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--green); margin-right:5px; }
+  .wrap { display:flex; align-items:stretch; }
+
+  /* 상품 목록 */
+  .list { width:190px; flex:none; background:#fff; border-right:1px solid var(--line); padding:14px 12px; }
+  .newbtn { text-align:center; background:var(--green); color:#fff; font-weight:700; padding:9px; margin-bottom:14px; }
+  .list h4 { font-size:11px; color:var(--muted); margin:0 0 6px; }
+  .item { padding:8px 10px; border-radius:4px; margin-bottom:2px; } .item.on { background:#eef9f2; }
+  .item .nm { font-weight:700; }
+  .st { display:inline-block; font-size:11px; padding:0 6px; line-height:18px; border-radius:3px; margin-top:2px; }
+  .st-draft { background:#f3eeff; color:var(--ai); } .st-review { background:#fff1e5; color:#c25e00; }
+  .st-private { background:#eef2ff; color:#3b5bdb; } .st-live { background:#e8f8ef; color:var(--green-text); }
+
+  /* 입력 */
+  .input { width:370px; flex:none; background:#fff; border-right:1px solid var(--line); padding:16px 18px 20px; }
+  .input h3 { font-size:14px; margin:0 0 10px; display:flex; align-items:center; gap:6px; }
+  .input h3 small { font-weight:400; color:var(--muted); font-size:11.5px; margin-left:auto; }
+  .sec { padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid #f0f0f0; }
+  .photos { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; border:1.5px dashed #c9cdd2; background:#fafbfc; padding:8px; }
+  .photos img, .photos .add { width:100%; aspect-ratio:1; object-fit:cover; border:1px solid var(--line); display:block; }
+  .photos .add { display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:22px; background:#fff; border-style:dashed; }
+  .f { display:flex; align-items:center; gap:8px; margin-bottom:7px; }
+  .f label { width:76px; flex:none; color:#444; }
+  .dot { display:inline-block; width:5px; height:5px; border-radius:50%; background:var(--red); margin-left:3px; vertical-align:middle; }
+  .box { flex:1; border:1px solid var(--field); background:#fff; padding:6px 10px; min-height:32px; display:flex; align-items:center; }
+  .box.ph { color:var(--muted); } .box.area { min-height:54px; align-items:flex-start; }
+  .two { display:flex; gap:8px; } .two .f { flex:1; } .two label { width:auto; }
+  .sel { flex:1; border:1px solid var(--field); padding:6px 10px; display:flex; } .sel::after { content:"▾"; margin-left:auto; color:var(--sub); }
+  .refs { display:flex; gap:6px; align-items:center; margin-top:6px; }
+  .refs .r { width:44px; height:56px; border:1px solid var(--line); background-size:cover; background-position:top; }
+  .refs .a { width:44px; height:56px; border:1px dashed #c9cdd2; display:flex; align-items:center; justify-content:center; color:var(--muted); }
+  .btn { border:1px solid #cfcfcf; background:#fff; padding:8px 14px; font-size:13px; color:#333; white-space:nowrap; display:inline-block; text-align:center; }
+  .btn.primary { background:var(--green); border-color:var(--green); color:#fff; font-weight:700; }
+  .btn.full { display:block; padding:11px; font-size:14px; }
+  .btn.sm { padding:4px 10px; font-size:12px; }
+  .btn.off { background:#e5e7eb; border-color:#e5e7eb; color:#9ca3af; }
+  .ask { border:1.5px solid #f5b47a; background:#fffaf5; padding:12px; margin-top:12px; }
+  .ask b { color:#c25e00; } .ask .opts { display:flex; gap:6px; margin-top:8px; }
+  .hint { color:var(--sub); font-size:12px; }
+
+  /* 미리보기 */
+  .pv { flex:1; min-width:0; padding:0 22px 24px; }
+  .pv-bar { position:sticky; top:0; background:var(--bg); padding:14px 0 10px; display:flex; align-items:center; gap:10px; }
+  .pv-bar h1 { font-size:18px; font-weight:400; margin:0; }
+  .pv-bar .ml { margin-left:auto; }
+  .prog { display:flex; align-items:center; gap:8px; color:var(--ai); font-weight:700; }
+  .prog .bar { width:140px; height:6px; background:#e4e1fb; border-radius:3px; overflow:hidden; } .prog .bar i { display:block; height:100%; width:45%; background:var(--ai); }
+  .banner { background:#e8f8ef; border:1px solid #b5e8cb; padding:10px 18px; margin-bottom:10px; display:flex; align-items:center; gap:12px; }
+  .banner b { color:var(--green-text); }
+  .same { color:var(--green-text); font-weight:700; font-size:12px; }
+  .card { background:#fff; border:1px solid var(--line); margin-bottom:8px; }
+  .row { display:flex; padding:13px 20px; gap:16px; } .row + .row { border-top:1px solid #f0f0f0; }
+  .row > .lb { width:110px; flex:none; font-weight:700; padding-top:2px; }
+  .row > .lb .bd { display:block; margin-top:4px; width:max-content; }
+  .row > .v { flex:1; min-width:0; }
+  .bd { display:inline-block; font-size:10.5px; line-height:17px; padding:0 6px; font-weight:700; border-radius:3px; white-space:nowrap; }
+  .bd-ai { background:linear-gradient(135deg,#6d5dfc,#3b82f6); color:#fff; } .bd-preset { background:#6b7280; color:#fff; }
+  .bd-decide { background:var(--orange); color:#fff; border-radius:0; }
+  .why { color:var(--ai); font-size:12px; margin-top:4px; }
+  .req { display:flex; gap:6px; margin-top:8px; }
+  .req .box { min-height:30px; border-color:#d9d4fb; background:#fbfaff; color:var(--muted); font-size:12px; }
+  .req .btn { border-color:#d9d4fb; color:var(--ai); font-weight:700; padding:4px 12px; font-size:12px; }
+  .thumbs { display:flex; gap:6px; } .thumbs img { width:62px; height:62px; object-fit:cover; border:1px solid var(--line); }
+  .thumbs img:first-child { outline:2px solid var(--green); outline-offset:-2px; }
+  .tags { display:flex; flex-wrap:wrap; gap:4px; } .tag { border:1px solid #ddd; background:#f7f7f7; padding:2px 8px; font-size:12px; }
+  .skel { height:12px; background:linear-gradient(90deg,#eef0f2,#f6f7f8,#eef0f2); border-radius:3px; margin:4px 0; }
+  .writing { color:var(--ai); font-size:12px; font-weight:700; }
+  .wait .lb { color:var(--muted); }
+  .collapsed { color:var(--sub); }
+
+  /* 상세페이지 섹션 */
+  .detail { display:flex; gap:18px; }
+  .page { width:270px; flex:none; height:430px; overflow:hidden; background:#f6efe4; border:1px solid #e6dccd; position:relative; color:#4a3b2a; }
+  .page::after { content:""; position:absolute; left:0; right:0; bottom:0; height:60px; background:linear-gradient(transparent,#f6efe4); }
+  .page img { width:100%; height:210px; object-fit:cover; display:block; }
+  .page .in { padding:12px 16px; } .page .k { font-size:9px; letter-spacing:2px; color:#a08566; }
+  .page h3 { font-family:"AppleMyungjo","Nanum Myeongjo",serif; font-size:17px; margin:2px 0 6px; }
+  .page p { font-size:11px; line-height:1.6; margin:0 0 8px; }
+  .icons { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; }
+  .icons div { background:#fff; border-radius:6px; text-align:center; padding:5px 0; font-size:9.5px; }
+  .icons i { display:block; width:14px; height:14px; border-radius:50%; margin:0 auto 2px; }
+  .dctl { flex:1; min-width:0; }
+  .dctl .line { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .ver { display:inline-flex; border:1px solid #cfcfcf; } .ver span { padding:3px 10px; font-size:12px; color:var(--sub); } .ver span.on { background:var(--ai); color:#fff; }
+  .hist { margin-top:10px; border-top:1px solid #f0f0f0; padding-top:8px; font-size:12px; color:var(--sub); }
+  .hist div { padding:3px 0; } .hist b { color:var(--ai); font-weight:700; margin-right:6px; }
+
+  [data-only] { display:none; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="logo">상품등록<span> 도우미</span></span>
+  <div class="menu"><span class="on">상품 등록</span><span>작성 기준</span><span>설정</span></div>
+  <div class="conn"><span><i></i>네이버 연결됨</span><span><i></i>ChatGPT 연결됨</span></div>
+</div>
+<div class="wrap">
+  <div class="list">
+    <div class="newbtn">+ 새 상품</div>
+    <h4>상품</h4>
+    <div class="item on"><div class="nm">송오브인디아</div><span class="st" id="st"></span></div>
+    <div class="item"><div class="nm">무늬아이비 1+1</div><span class="st st-live">판매 중</span></div>
+    <div class="item"><div class="nm">스투키</div><span class="st st-live">판매 중</span></div>
+    <div class="item"><div class="nm">몬스테라</div><span class="st st-private">비공개 등록</span></div>
+  </div>
+
+  <!-- 입력 -->
+  <div class="input">
+    <div class="sec">
+      <h3>사진<span class="dot"></span><small>대표 사진은 AI가 골라요</small></h3>
+      <div class="photos">
+        <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/rep.jpg">
+        <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-1.jpg">
+        <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-2.jpg">
+        <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-3.jpg">
+        <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-4.jpg">
+        <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-5.jpg">
+        <div class="add">+</div>
+      </div>
+    </div>
+    <div class="sec">
+      <h3>상품 정보</h3>
+      <div class="f"><label>식물 이름<span class="dot"></span></label><div class="box">송오브인디아</div></div>
+      <div class="f"><label>구성<span class="dot"></span></label><div class="box">1개</div></div>
+      <div class="f"><label>매입가<span class="dot"></span></label><div class="box">12,000</div>원</div>
+      <div class="f"><label>정가</label><div class="box ph">비우면 임시 규칙</div>원</div>
+      <div class="two"><div class="f"><label>높이</label><div class="box">50~55</div>cm</div><div class="f"><label>화분</label><div class="box">15</div>cm</div></div>
+    </div>
+    <div class="sec">
+      <h3>상세페이지</h3>
+      <div class="f"><label>디자인</label><div class="sel">기본 디자인 (베이지)</div></div>
+      <div class="f" style="align-items:flex-start"><label style="padding-top:6px">요청사항</label><div class="box area ph">예: 잎 끝 갈변 안내 넣어줘, 사진은 크게</div></div>
+      <div class="f"><label>참고 이미지</label><div class="refs" style="margin:0"><div class="r" style="background-image:url('../../../../data/01-식물-상품등록/상세페이지_샘플/핑크국화.png')"></div><div class="a">+</div></div></div>
+    </div>
+    <div data-only="a"><span class="btn off full">작성 중…</span>
+      <div class="ask"><b>AI의 질문</b><div style="margin-top:4px">구성에 화분이 포함되나요? 상세페이지 '상품 정보'에 들어가요.</div>
+        <div class="opts"><span class="btn sm">화분 포함</span><span class="btn sm">식물만</span><span class="btn sm">빼고 작성</span></div></div></div>
+    <div data-only="b"><span class="btn full">입력 바꿔서 다시 작성</span><div class="hint" style="margin-top:6px">일부만 고치려면 오른쪽 섹션의 수정 요청을 쓰세요</div></div>
+    <div data-only="c"><div class="hint">등록 후 수정하면 네이버에도 다시 반영할지 물어봐요</div></div>
+  </div>
+
+  <!-- 미리보기 -->
+  <div class="pv">
+    <div class="pv-bar">
+      <h1 data-only="a">송오브인디아</h1><h1 data-only="b c">송오브인디아 1개 공기정화식물 노란무늬 외목대</h1>
+      <span class="ml" data-only="a"><span class="prog">AI가 작성하고 있어요 <span class="bar"><i></i></span> 3 / 7</span></span>
+      <span class="ml" data-only="b"><span class="btn primary" style="padding:9px 22px">네이버에 비공개 등록</span></span>
+      <span class="ml" data-only="c"><span class="btn">판매자센터에서 열기 ↗</span> <span class="btn primary" style="padding:9px 22px">판매 공개</span></span>
+    </div>
+
+    <div class="banner" data-only="c"><b>네이버에 비공개로 등록했어요</b><span class="hint">상품번호 13778644157 · 아직 고객에게 보이지 않아요</span><span class="same" style="margin-left:auto">✓ 네이버 저장값과 모두 일치 (7/7)</span></div>
+
+    <div class="card" data-only="b"><div class="row" style="align-items:center"><span class="bd bd-decide">결정 필요</span><span style="flex:1"><b>판매가</b> — 정가 32,900원은 임시 규칙(매입가 × 2.74)으로 계산했어요.</span><span class="btn sm">이 가격으로 확정</span><span class="btn sm">정가 입력</span></div></div>
+
+    <div class="card">
+      <div class="row"><div class="lb">카테고리<span class="bd bd-ai">✦ AI</span></div><div class="v">생활/건강 &gt; 원예/식물 &gt; <b>공기정화식물</b><div class="why">✦ 최근 3개월 클릭 수요가 관엽식물보다 높아요</div></div></div>
+      <div class="row"><div class="lb">상품명<span class="bd bd-ai">✦ AI</span></div><div class="v">송오브인디아 1개 공기정화식물 노란무늬 외목대 <span class="hint">25/100</span>
+        <div class="why">✦ '송오브인디아' 표기가 검색이 더 많아 앞에 두고, 사진 속 노란 잎과 외목대를 특징으로 넣었어요</div>
+        <div class="req" data-only="b c"><div class="box">수정 요청 — 예: 더 짧게, '실내' 넣어줘</div><span class="btn">요청</span></div></div></div>
+      <div class="row"><div class="lb">판매가<span class="bd bd-ai">✦ AI</span></div><div class="v">
+        <div data-only="a"><span class="writing">● 작성 중…</span><div class="skel" style="width:40%"></div></div>
+        <div data-only="b c">정가 <b>32,900원</b> → 기본할인 20% → 할인가 <b>26,320원</b></div></div></div>
+    </div>
+
+    <div class="card">
+      <div class="row"><div class="lb">상품이미지<span class="bd bd-ai">✦ AI</span></div><div class="v">
+        <div data-only="a"><div class="skel" style="width:60%;height:40px"></div></div>
+        <div data-only="b c"><div class="thumbs">
+          <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/rep.jpg">
+          <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-1.jpg">
+          <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-2.jpg">
+          <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-3.jpg">
+          <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-4.jpg">
+          <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/add-5.jpg"></div>
+          <div class="why">✦ 대표는 연출 사진, 추가는 전체 → 잎 → 줄기 → 화분 순</div>
+          <div class="req" data-only="b c"><div class="box">수정 요청 — 예: 대표 사진 흰 배경으로 보정해줘</div><span class="btn">요청</span></div></div></div></div>
+
+      <div class="row"><div class="lb">상세페이지<span class="bd bd-ai">✦ AI</span></div><div class="v">
+        <div data-only="a"><div class="skel" style="width:270px;height:120px"></div><div class="skel" style="width:200px"></div></div>
+        <div data-only="b c"><div class="detail">
+          <div class="page">
+            <img src="../../../../plant-agent/products/2026-10-30_송오브인디아/images/rep.jpg">
+            <div class="in"><div class="k">GREEN INTERIOR</div><h3>송오브인디아</h3>
+              <p>노란 줄무늬 잎이 시원하게 뻗는 외목대 수형. 거실이나 창가 어디에 두어도 공간이 환해져요.</p>
+              <div class="icons"><div><i style="background:#f3d27a"></i>밝은 간접광</div><div><i style="background:#9cc7e6"></i>겉흙 마르면</div><div><i style="background:#f0a98a"></i>15~25℃</div><div><i style="background:#a9d3b0"></i>통풍 자주</div></div>
+              <p style="margin-top:8px">높이 50~55cm · 화분 지름 15cm · 송오브인디아 1개</p></div>
+          </div>
+          <div class="dctl">
+            <div class="line"><span class="hint">디자인</span><b>기본 디자인 (베이지)</b><span class="ml"></span><span class="ver"><span>1</span><span class="on">2</span></span></div>
+            <div class="line"><span class="btn sm">크게 보기</span><span class="btn sm">PC / 모바일</span><span class="btn sm">이미지 3장 받기</span></div>
+            <div class="req"><div class="box">수정 요청 — 글이나 이미지로. 예: 키우는 법을 더 자세히</div><span class="btn">요청</span></div>
+            <div class="refs"><div class="a" style="width:auto;height:28px;padding:0 10px;font-size:12px">+ 이미지 첨부</div></div>
+            <div class="hist">
+              <div><b>v2</b>잎 끝 갈변 안내 추가해줘</div>
+              <div><b>v1</b>처음 작성 · 기본 디자인</div>
+            </div>
+            <div class="hint" style="margin-top:8px">마음에 드는 스타일이면 <u>이 디자인을 기본으로 저장</u></div>
+          </div>
+        </div></div></div></div>
+    </div>
+
+    <div class="card">
+      <div class="row"><div class="lb">검색설정<span class="bd bd-ai">✦ AI</span></div><div class="v">
+        <div data-only="a" class="wait"><div class="skel" style="width:70%"></div></div>
+        <div data-only="b c"><div class="tags"><span class="tag">드라세나</span><span class="tag">외목대식물</span><span class="tag">거실식물</span><span class="tag">개업선물</span><span class="tag">집들이선물</span><span class="tag">반그늘식물</span><span class="tag">…</span></div></div></div></div>
+      <div class="row collapsed"><div class="lb" style="font-weight:400">기본 설정<span class="bd bd-preset">⚙ 설정</span></div><div class="v">재고 · 상품 주요정보 · 고시 · 배송 · 반품/교환 · A/S · 노출 채널 — 스토어 기본값 그대로 <span class="hint">펼쳐 보기 ›</span></div></div>
+    </div>
+  </div>
+</div>
+<script>
+  const s = new URLSearchParams(location.search).get('s') || 'b';
+  document.querySelectorAll('[data-only]').forEach(el => { if (el.dataset.only.split(' ').includes(s)) el.style.display = ''; });
+  document.querySelectorAll('[data-only]').forEach(el => { if (!el.dataset.only.split(' ').includes(s)) el.remove(); else el.removeAttribute('data-only'); });
+  const st = document.getElementById('st');
+  const m = { a: ['st-draft', 'AI 작성 중'], b: ['st-review', '검토 필요'], c: ['st-private', '비공개 등록'] }[s];
+  st.classList.add(m[0]); st.textContent = m[1];
+</script>
+</body>
+</html>
