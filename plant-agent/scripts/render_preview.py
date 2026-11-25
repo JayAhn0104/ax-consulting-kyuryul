@@ -6,7 +6,7 @@
 - 섹션 제목 옆 출처 배지: 'AI 작성' 또는 '기본 설정'
 - 섹션 하단 'AI 판단 근거' 띠: 판단 요약 한두 문장. 띠를 누르면 근거 데이터·규칙 검사 결과
 
-시안: docs/01-식물-상품등록/assets/06-미리보기-시안.html
+시안: docs/01-식물-상품등록/02-Codex-PoC/assets/03-미리보기-시안.html
 이전 형식(최상위 basis.thumbnail 등)도 읽음.
 
 사용: uv run scripts/render_preview.py <상품폴더> [--open]
